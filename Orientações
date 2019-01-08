@@ -1,0 +1,3 @@
+Nesta atividade, com a mesma composição do grupo da atividade anterior, deve ser construída uma API simples de acordo com o domínio escolhido. Ao modelar suas classes, crie os testes unitários para pelo menos 5 delas, incluindo os Mocks necessários para cada uma. Procure validar os cenários e casos de testes já levantados na atividade anterior
+
+O repositório com essa atividade deve estar hospedado na organização da disciplina no Github (https://github.com/ads-ifpb-testes) e deve conter, em um arquivo README.md o nome dos integrantes da equipe. Ao final, crie uma tag "v0.1".
