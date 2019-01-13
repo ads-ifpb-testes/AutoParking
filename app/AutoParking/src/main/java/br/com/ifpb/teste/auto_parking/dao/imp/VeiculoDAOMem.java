@@ -10,6 +10,10 @@ public class VeiculoDAOMem implements VeiculoDAO{
 	
 	private HashSet<Veiculo> veiculos = null;
 	
+	public VeiculoDAOMem() {
+		veiculos = new HashSet<Veiculo>();
+	}
+	
 	public boolean VeiculoExiste(Veiculo veiculo) {
 		// TODO Auto-generated method stub
 		return false;
