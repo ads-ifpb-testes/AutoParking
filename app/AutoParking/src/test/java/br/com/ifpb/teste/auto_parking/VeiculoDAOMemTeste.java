@@ -1,7 +1,5 @@
 package br.com.ifpb.teste.auto_parking;
 
-import static org.junit.Assert.assertArrayEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
