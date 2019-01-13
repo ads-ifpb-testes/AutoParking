@@ -45,8 +45,11 @@ public class VeiculoDAOMem implements VeiculoDAO{
 	}
 
 	public boolean editarVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		return false;
+		if (!veiculos.contains(veiculo))
+			return false;
+		if(!excluirVeiculo(veiculo))
+			return false;
+		return cadastrarVeiculo(veiculo);
 	}
 
 	public boolean excluirVeiculo(Veiculo veiculo) {
