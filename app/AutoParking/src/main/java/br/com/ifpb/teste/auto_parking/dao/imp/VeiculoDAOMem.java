@@ -14,9 +14,8 @@ public class VeiculoDAOMem implements VeiculoDAO{
 		veiculos = new HashSet<Veiculo>();
 	}
 	
-	public boolean VeiculoExiste(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean VeiculoExiste(Veiculo veiculo) {		
+		return veiculos.contains(veiculo);
 	}
 
 	public boolean cadastrarVeiculo(Veiculo veiculo) {
