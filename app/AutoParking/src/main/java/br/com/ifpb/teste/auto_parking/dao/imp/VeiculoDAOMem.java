@@ -19,8 +19,9 @@ public class VeiculoDAOMem implements VeiculoDAO{
 	}
 
 	public boolean cadastrarVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		return false;		
+		if (VeiculoExiste(veiculo))
+			return false;		
+		return veiculos.add(veiculo);
 	}
 
 	public Veiculo buscarVeiculo(String placa) {
