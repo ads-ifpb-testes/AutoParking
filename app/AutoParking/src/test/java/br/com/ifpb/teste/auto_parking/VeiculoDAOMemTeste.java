@@ -57,6 +57,8 @@ public class VeiculoDAOMemTeste {
 	
 	@Test
 	public void buscarVeiculoTeste() {
+		
+		Assert.assertNull(veiculoDAO.buscarVeiculo("XXX-0000"));
 		for(Veiculo veiculo: listaVeiculos) {
 			Assert.assertEquals(veiculo, veiculoDAO.buscarVeiculo(veiculo.getPlaca()));
 		}
