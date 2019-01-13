@@ -35,5 +35,10 @@ public class PrecoDAOMemTeste {
 			precoDAO.cadastrarPreco(preco);
 		}
 	}
+	
+	@After
+	public vod finalTeste() {
+		precoDAO = null;
+	}
 
 }
