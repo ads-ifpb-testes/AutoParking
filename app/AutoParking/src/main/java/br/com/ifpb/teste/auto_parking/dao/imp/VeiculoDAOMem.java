@@ -35,8 +35,13 @@ public class VeiculoDAOMem implements VeiculoDAO{
 	}
 
 	public List<Veiculo> buscarVeiculos(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Veiculo> tmpVeiculos = new ArrayList<Veiculo>(veiculos);
+		ArrayList<Veiculo> rspVeiculos = new ArrayList<Veiculo>();
+		for(Veiculo veiculo: tmpVeiculos) {
+			if(veiculo.getCpfProprietario().equals(cpf))
+				rspVeiculos.add(veiculo);
+		}
+		return rspVeiculos;
 	}
 
 	public boolean editarVeiculo(Veiculo veiculo) {
