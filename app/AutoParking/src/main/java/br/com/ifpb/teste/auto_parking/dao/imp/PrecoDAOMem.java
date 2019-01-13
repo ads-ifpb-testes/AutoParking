@@ -9,10 +9,15 @@ import br.com.ifpb.teste.auto_parking.model.Preco;
 public class PrecoDAOMem implements PrecoDAO {
 	
 	private HashSet<Preco> precos = null;
-
-	public void cadastrarPreco(Preco preco) {
-		// TODO Auto-generated method stub
 		
+	public boolean PrecoExiste(Preco preco) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean cadastrarPreco(Preco preco) {
+		// TODO Auto-generated method stub
+		return false;		
 	}
 
 	public boolean editarPreco(Preco preco) {
