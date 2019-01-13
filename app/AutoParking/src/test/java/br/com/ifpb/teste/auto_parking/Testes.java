@@ -7,7 +7,9 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
 	ClienteDAOMemTeste.class,
-	VeiculoDAOMemTeste.class
+	VeiculoDAOMemTeste.class,
+	PrecoDAOMemTeste.class
+	
 })
 
 public class Testes {
