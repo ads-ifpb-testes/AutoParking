@@ -5,7 +5,8 @@ import java.util.List;
 import br.com.ifpb.teste.auto_parking.model.Cliente;
 
 public interface ClienteDAO {	
-	void cadastrarCliente(Cliente cliente);
+	boolean clienteExiste(Cliente cliente);
+	boolean cadastrarCliente(Cliente cliente);
 	boolean editarCliente(Cliente cliente);
 	boolean excluirCliente(Cliente cliente);
 	Cliente buscarCliente(String cpf);

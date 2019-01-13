@@ -8,11 +8,16 @@ import br.com.ifpb.teste.auto_parking.model.Veiculo;
 
 public class VeiculoDAOMem implements VeiculoDAO{
 	
-	private HashSet<Veiculo> veiculos = null; 
-
-	public void cadastrarVeiculo(Veiculo veiculo) {
+	private HashSet<Veiculo> veiculos = null;
+	
+	public boolean VeiculoExiste(Veiculo veiculo) {
 		// TODO Auto-generated method stub
-		
+		return false;
+	}
+
+	public boolean cadastrarVeiculo(Veiculo veiculo) {
+		// TODO Auto-generated method stub
+		return false;		
 	}
 
 	public Veiculo buscarVeiculo(String placa) {
@@ -39,5 +44,4 @@ public class VeiculoDAOMem implements VeiculoDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
