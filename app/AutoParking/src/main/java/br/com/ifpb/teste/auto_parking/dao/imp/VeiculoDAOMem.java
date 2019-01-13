@@ -26,7 +26,11 @@ public class VeiculoDAOMem implements VeiculoDAO{
 	}
 
 	public Veiculo buscarVeiculo(String placa) {
-		// TODO Auto-generated method stub
+		ArrayList<Veiculo> tmpVeiculos = new ArrayList<Veiculo>(veiculos);
+		for(Veiculo veiculo: tmpVeiculos) {
+			if(veiculo.getPlaca().equals(placa))
+				return veiculo;
+		}		
 		return null;
 	}
 
