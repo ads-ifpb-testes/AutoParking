@@ -50,8 +50,9 @@ public class VeiculoDAOMem implements VeiculoDAO{
 	}
 
 	public boolean excluirVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		return false;
+		if (!VeiculoExiste(veiculo))
+			return false;		
+		return veiculos.remove(veiculo);
 	}
 
 	public List<Veiculo> listarVeiculos() {
