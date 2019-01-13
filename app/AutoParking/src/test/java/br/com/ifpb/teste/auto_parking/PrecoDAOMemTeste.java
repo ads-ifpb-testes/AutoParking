@@ -61,5 +61,17 @@ public class PrecoDAOMemTeste {
 			Assert.assertTrue(listaPreco.contains(preco));
 		}		
 	}
+	
+	@Test
+	public void editarPrecoTeste() {
+		Preco novoPreco = new Preco(false, 260, 0, 0.3335f);
+		Assert.assertFalse(precoDAO.editarPreco(novoPreco));
+		for(Preco preco: listaPreco) {
+			novoPreco.setDuracaoInicial(preco.getDuracaoInicial());
+			novoPreco.setDuracaoFinal(preco.getDuracaoFinal());			
+			Assert.assertTrue(precoDAO.editarPreco(novoPreco));
+			Assert.assertTrue(precoDAO.PrecoExiste(novoPreco));
+		}
+	}
 
 }
