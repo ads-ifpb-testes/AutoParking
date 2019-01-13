@@ -37,8 +37,20 @@ public class PrecoDAOMemTeste {
 	}
 	
 	@After
-	public vod finalTeste() {
+	public void finalTeste() {
 		precoDAO = null;
 	}
+	
+	@Test
+	public void cadastrarPrecoTeste() {
+		Preco novoPreco = new Preco(false, 260, 0, 0.3335f);
+		Assert.assertTrue(precoDAO.cadastrarPreco(novoPreco));
+		List<Preco> lista = precoDAO.listarPrecos();
+		Assert.assertTrue(lista.contains(novoPreco));
+		for(Preco preco: listaPreco) {
+			Assert.assertFalse(precoDAO.cadastrarPreco(preco));
+		}
+	}
+	
 
 }
