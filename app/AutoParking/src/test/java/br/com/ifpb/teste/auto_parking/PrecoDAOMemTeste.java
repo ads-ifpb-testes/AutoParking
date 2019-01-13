@@ -52,5 +52,14 @@ public class PrecoDAOMemTeste {
 		}
 	}
 	
+	@Test
+	public void listarPrecosTeste() {
+		List<Preco> lista = precoDAO.listarPrecos();
+		Assert.assertTrue(lista.size()==listaPreco.size());
+		
+		for(Preco preco: lista) {
+			Assert.assertTrue(listaPreco.contains(preco));
+		}		
+	}
 
 }
