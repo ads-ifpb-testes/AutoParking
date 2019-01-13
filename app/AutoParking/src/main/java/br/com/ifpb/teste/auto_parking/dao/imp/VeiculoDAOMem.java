@@ -1,5 +1,6 @@
 package br.com.ifpb.teste.auto_parking.dao.imp;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class VeiculoDAOMem implements VeiculoDAO{
 	}
 
 	public List<Veiculo> listarVeiculos() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Veiculo> tmpVeiculo = new ArrayList<Veiculo>(veiculos);
+		return tmpVeiculo;
 	}
 }
