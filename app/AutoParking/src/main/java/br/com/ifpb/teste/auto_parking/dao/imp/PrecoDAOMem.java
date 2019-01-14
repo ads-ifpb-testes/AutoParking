@@ -10,6 +10,10 @@ import br.com.ifpb.teste.auto_parking.model.Preco;
 public class PrecoDAOMem implements PrecoDAO {
 	
 	private HashSet<Preco> precos = null;
+	
+	public PrecoDAOMem() {
+		precos = new HashSet<Preco>();
+	}
 		
 	public boolean precoExiste(Preco preco) {		
 		return precos.contains(preco);
