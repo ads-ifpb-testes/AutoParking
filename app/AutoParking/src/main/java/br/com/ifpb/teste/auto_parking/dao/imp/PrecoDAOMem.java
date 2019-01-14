@@ -10,9 +10,8 @@ public class PrecoDAOMem implements PrecoDAO {
 	
 	private HashSet<Preco> precos = null;
 		
-	public boolean precoExiste(Preco preco) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean precoExiste(Preco preco) {		
+		return precos.contains(preco);
 	}
 
 	public boolean cadastrarPreco(Preco preco) {
