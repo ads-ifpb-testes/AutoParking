@@ -29,6 +29,19 @@ public class Estacionamento {
 		this.dhChegada = LocalDateTime.now();
 		this.valor = 0.0;
 	}
+	
+	public Estacionamento(int id, boolean quitado, boolean finalizado, String placa, LocalDateTime dhChegada,
+			LocalDateTime dhPagamento, LocalDateTime dhSaida, Double valor) {
+		super();
+		this.id = id;
+		this.quitado = quitado;
+		this.finalizado = finalizado;
+		this.placa = placa;
+		this.dhChegada = dhChegada;
+		this.dhPagamento = dhPagamento;
+		this.dhSaida = dhSaida;
+		this.valor = valor;
+	}
 
 	public int getId() {
 		return id;
