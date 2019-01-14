@@ -1,23 +1,24 @@
 package br.com.ifpb.teste.auto_parking.model;
 
 public class Preco {
-	private boolean precoPadrao;
+	private boolean precoFixo;
 	private long duracaoInicial;
 	private long duracaoFinal;
 	private double precoPorHora;
 	public Preco() {
 	}
-	public Preco(boolean precoPadrao, long duracaoInicial, long duracaoFinal, double precoPorHora) {
-		this.precoPadrao = precoPadrao;
+	public Preco(boolean precoFixo, long duracaoInicial, long duracaoFinal, double precoPorHora) {
+		super();
+		this.precoFixo = precoFixo;
 		this.duracaoInicial = duracaoInicial;
 		this.duracaoFinal = duracaoFinal;
 		this.precoPorHora = precoPorHora;
 	}
-	public boolean isPrecoPadrao() {
-		return precoPadrao;
+	public boolean isPrecoFixo() {
+		return precoFixo;
 	}
-	public void setPrecoPadrao(boolean precoPadrao) {
-		this.precoPadrao = precoPadrao;
+	public void setPrecoFixo(boolean precoFixo) {
+		this.precoFixo = precoFixo;
 	}
 	public long getDuracaoInicial() {
 		return duracaoInicial;
@@ -36,11 +37,6 @@ public class Preco {
 	}
 	public void setPrecoPorHora(double precoPorHora) {
 		this.precoPorHora = precoPorHora;
-	}
-	@Override
-	public String toString() {
-		return "Preco [precoPadrao=" + precoPadrao + ", duracaoInicial=" + duracaoInicial + ", duracaoFinal="
-				+ duracaoFinal + ", precoPorHora=" + precoPorHora + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -64,5 +60,6 @@ public class Preco {
 		if (duracaoInicial != other.duracaoInicial)
 			return false;
 		return true;
-	}	
+	}
+		
 }
