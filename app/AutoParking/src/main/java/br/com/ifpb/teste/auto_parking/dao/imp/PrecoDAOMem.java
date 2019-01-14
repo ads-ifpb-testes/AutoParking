@@ -29,8 +29,9 @@ public class PrecoDAOMem implements PrecoDAO {
 	}
 
 	public boolean excluirPreco(Preco preco) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!precoExiste(preco))
+			return false;
+		return precos.remove(preco);		
 	}
 
 	public float calcularPreco(long duracao) {
