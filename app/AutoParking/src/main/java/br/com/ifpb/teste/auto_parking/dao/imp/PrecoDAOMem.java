@@ -1,5 +1,6 @@
 package br.com.ifpb.teste.auto_parking.dao.imp;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -40,8 +41,8 @@ public class PrecoDAOMem implements PrecoDAO {
 	}
 
 	public List<Preco> listarPrecos() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Preco> tmpPreco = new ArrayList<Preco>(precos);
+		return tmpPreco;
 	}
 
 }
