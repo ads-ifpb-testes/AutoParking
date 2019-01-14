@@ -30,9 +30,9 @@ public class PrecoDAOMem implements PrecoDAO {
 		return false;
 	}
 
-	public Preco calcularPreco(long duracao) {
+	public float calcularPreco(long duracao) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	public List<Preco> listarPrecos() {

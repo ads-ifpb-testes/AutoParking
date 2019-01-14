@@ -9,6 +9,6 @@ public interface PrecoDAO {
 	boolean cadastrarPreco(Preco preco);
 	boolean editarPreco(Preco preco);
 	boolean excluirPreco(Preco preco);
-	Preco calcularPreco(long duracao);
+	float calcularPreco(long duracao);
 	List<Preco> listarPrecos();	
 }
