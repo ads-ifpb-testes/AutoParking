@@ -21,11 +21,11 @@ public class PrecoDAOMemTeste {
 	
 	@BeforeClass
 	public static void criarPrecos() {
-		listaPreco.add(new Preco(true, 0, 30, 5.5f));     //   0 ~ 30  minutos
-		listaPreco.add(new Preco(true, 31, 60, 4.4f));    //  31 ~ 60  minutos
-		listaPreco.add(new Preco(true, 61, 120, 4.0f));   //  61 ~ 120 minutos
-		listaPreco.add(new Preco(true, 121, 180, 3.6f));  // 121 ~ 180 minutos
-		listaPreco.add(new Preco(false, 181, 0, 0.0583f));// 181 ~ ... minutos - Relativo aos minutos
+		listaPreco.add(new Preco(true, 0, 0, 5.5f));        //   valor fixo
+		listaPreco.add(new Preco(false, 31, 60, 0.18f)); //  31 ~ 60  minutos
+		listaPreco.add(new Preco(false, 61, 120, 0.16f));//  61 ~ 120 minutos
+		listaPreco.add(new Preco(false, 121, 180, 0.15f));  // 121 ~ 180 minutos
+		listaPreco.add(new Preco(false, 181, 0, 0.14f));    // 181 ~ ... minutos - Relativo aos minutos
 	}
 	
 	@Before
@@ -46,7 +46,24 @@ public class PrecoDAOMemTeste {
 		Assert.assertEquals(5.5f, precoDAO.calcularPreco(0), 0.001f);
 		Assert.assertEquals(5.5f, precoDAO.calcularPreco(15), 0.001f);
 		Assert.assertEquals(5.5f, precoDAO.calcularPreco(30), 0.001f);
-		Assert.assertEquals(5.5f + 4.4f, precoDAO.calcularPreco(31), 0.001f);
+		// 31 ~ 60
+		Assert.assertEquals(5.5f + (0.18f * (31 - 31)) , precoDAO.calcularPreco(31), 0.001f);
+		Assert.assertEquals(5.5f + (0.18f * (46 - 31)) , precoDAO.calcularPreco(46), 0.001f);
+		Assert.assertEquals(5.5f + (0.18f * (60 - 31)) , precoDAO.calcularPreco(60), 0.001f);
+		//61 ~ 120
+		Assert.assertEquals(5.5f + 5.22f + (0.16f * (61 - 61)) , precoDAO.calcularPreco(61), 0.001f);
+		Assert.assertEquals(5.5f + 5.22f + (0.16f * (91 - 61)) , precoDAO.calcularPreco(91), 0.001f);
+		Assert.assertEquals(5.5f + 5.22f + (0.16f * (120 - 61)) , precoDAO.calcularPreco(120), 0.001f);
+		//121 ~ 180
+		Assert.assertEquals(5.5f + 5.22f + 9.44f + (0.15f * (121 - 121)) , precoDAO.calcularPreco(121), 0.001f);
+		Assert.assertEquals(5.5f + 5.22f + 9.44f + (0.15f * (151 - 121)) , precoDAO.calcularPreco(151), 0.001f);
+		Assert.assertEquals(5.5f + 5.22f + 9.44f + (0.15f * (180 - 121)) , precoDAO.calcularPreco(180), 0.001f);
+		//181 ~ ...
+		Assert.assertEquals(5.5f + 5.22f + 9.44f + 8.85f + (0.14f * (181 - 181)) , precoDAO.calcularPreco(181), 0.001f);
+		Assert.assertEquals(5.5f + 5.22f + 9.44f + 8.85f + (0.14f * (300 - 181)) , precoDAO.calcularPreco(300), 0.001f);
+		Assert.assertEquals(5.5f + 5.22f + 9.44f + 8.85f + (0.14f * (900 - 181)) , precoDAO.calcularPreco(900), 0.001f);
+		
+		
 		Assert.assertEquals(5.5f + 4.4f, precoDAO.calcularPreco(46), 0.001f);
 		Assert.assertEquals(5.5f + 4.4f, precoDAO.calcularPreco(60), 0.001f);
 		Assert.assertEquals(5.5f + 4.4f + 4.0f, precoDAO.calcularPreco(61), 0.001f);
