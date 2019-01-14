@@ -15,16 +15,17 @@ public class PrecoDAOMem implements PrecoDAO {
 	}
 
 	public boolean cadastrarPreco(Preco preco) {
+		if(precoExiste(preco))
+			return false;		
+		return precos.add(preco);
+	}
+
+	public boolean editarPreco(Preco preco) {
 		if(!precoExiste(preco))
 			return false;
 		if (!precos.remove(preco))
 			return false;
 		return precos.add(preco);
-	}
-
-	public boolean editarPreco(Preco preco) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	public boolean excluirPreco(Preco preco) {
