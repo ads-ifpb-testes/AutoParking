@@ -24,6 +24,7 @@ public class EstacionamentoDAOMemTeste {
 		listaEstacionamento.add(new Estacionamento(1, true, true, "JJK-1373", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 5.5));
 		listaEstacionamento.add(new Estacionamento(2, false, false, "JOE-8330", LocalDateTime.now().minusHours(1), null, null, null));
 		listaEstacionamento.add(new Estacionamento(3, true, false, "EFH-9373", LocalDateTime.now().minusHours(2), LocalDateTime.now().minusMonths(1), LocalDateTime.now(), 5.5));
+		listaEstacionamento.add(new Estacionamento(4, false, false, "JJK-1373", LocalDateTime.now().minusHours(2), null, null, null));
 	}
 	
 	@Before
@@ -52,5 +53,22 @@ public class EstacionamentoDAOMemTeste {
 			Assert.assertTrue(lista.contains(estacionamento));
 		}
 	}
-
+	
+	@Test
+	public void buscarEstacionamentoTeste() {
+		
+		Assert.assertNull(estacionamentoDAO.buscarEstacionamento(5));
+		
+		for(Estacionamento estacionamento: listaEstacionamento) {
+			Assert.assertEquals(estacionamento, estacionamentoDAO.buscarEstacionamento(estacionamento.getId()));
+		}
+		
+		List<Estacionamento> lista = null;
+		for(Estacionamento aEstacionamento: listaEstacionamento) {
+			lista = estacionamentoDAO.buscarEstacionamento(aEstacionamento.getPlaca());
+			for(Estacionamento bEstacionamento: lista) {
+				Assert.assertEquals(aEstacionamento.getPlaca(), bEstacionamento.getPlaca());
+			}
+		}
+	}	
 }
