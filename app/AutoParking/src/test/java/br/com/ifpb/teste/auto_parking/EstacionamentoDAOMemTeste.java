@@ -1,5 +1,7 @@
 package br.com.ifpb.teste.auto_parking;
 
+import static org.junit.Assert.assertTrue;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,7 @@ public class EstacionamentoDAOMemTeste {
 	
 	@Test
 	public void cadastrarEstacionamentoTeste() {
-		Estacionamento novoEstacionamento = new Estacionamento(4, false, false, "HRL-8233", LocalDateTime.now(), null, null, null);
+		Estacionamento novoEstacionamento = new Estacionamento(5, false, false, "HRL-8233", LocalDateTime.now(), null, null, null);
 		Assert.assertTrue(estacionamentoDAO.cadastrarEstacionamento(novoEstacionamento));
 		List<Estacionamento> lista = estacionamentoDAO.listarEstacionamento();
 		Assert.assertTrue(lista.contains(novoEstacionamento));
@@ -57,7 +59,7 @@ public class EstacionamentoDAOMemTeste {
 	@Test
 	public void buscarEstacionamentoTeste() {
 		
-		Assert.assertNull(estacionamentoDAO.buscarEstacionamento(50));
+		Assert.assertNull(estacionamentoDAO.buscarEstacionamento(5));
 		
 		for(Estacionamento estacionamento: listaEstacionamento) {
 			Assert.assertEquals(estacionamento, estacionamentoDAO.buscarEstacionamento(estacionamento.getId()));
@@ -81,6 +83,18 @@ public class EstacionamentoDAOMemTeste {
 			if(!estacionamento.isFinalizado()) {
 				Assert.assertEquals(estacionamento.getId(),estacionamentoDAO.buscarIdPlaca(estacionamento.getPlaca()))
 			}
+		}
+		
+	}
+	
+	@Test
+	public void editarEstacionamentoTeste() {
+		Estacionamento novoEstacionamento = new Estacionamento(5, true, true, "MKI-5381", LocalDateTime.now().minusHours(3), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 3.75);
+		Assert.assertFalse(estacionamentoDAO.editarEstacionamento(novoEstacionamento));
+		
+		for(Estacionamento estacionamento: listaEstacionamento) {
+			novoEstacionamento.setId(estacionamento.getId());
+			assertTrue(estacionamentoDAO.editarEstacionamento(novoEstacionamento));
 		}
 		
 	}
