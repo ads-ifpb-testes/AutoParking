@@ -3,6 +3,7 @@ package br.com.ifpb.teste.auto_parking;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
@@ -33,6 +34,11 @@ public class EstacionamentoDAOMemTeste {
 	@After
 	public void finalTeste() {
 		estacionamentoDAO = null; 
+	}
+	
+	@Teste
+	public void cadastrarEstacionamentoTeste() {
+		
 	}
 
 }
