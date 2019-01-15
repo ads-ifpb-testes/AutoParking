@@ -57,7 +57,7 @@ public class EstacionamentoDAOMemTeste {
 	@Test
 	public void buscarEstacionamentoTeste() {
 		
-		Assert.assertNull(estacionamentoDAO.buscarEstacionamento(5));
+		Assert.assertNull(estacionamentoDAO.buscarEstacionamento(50));
 		
 		for(Estacionamento estacionamento: listaEstacionamento) {
 			Assert.assertEquals(estacionamento, estacionamentoDAO.buscarEstacionamento(estacionamento.getId()));
@@ -71,4 +71,17 @@ public class EstacionamentoDAOMemTeste {
 			}
 		}
 	}	
+	
+	@Test
+	public void buscarIdPlacaTeste() {
+		
+		Assert.assertEquals(0, estacionamentoDAO.buscarIdPlaca("XXX-0000"));
+		
+		for(Estacionamento estacionamento: listaEstacionamento) {
+			if(!estacionamento.isFinalizado()) {
+				Assert.assertEquals(estacionamento.getId(),estacionamentoDAO.buscarIdPlaca(estacionamento.getPlaca()))
+			}
+		}
+		
+	}
 }
