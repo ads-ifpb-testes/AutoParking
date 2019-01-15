@@ -98,4 +98,26 @@ public class EstacionamentoDAOMemTeste {
 		}
 		
 	}
+	
+	@Test
+	public void excluirEstacionamentoTeste() {
+		Estacionamento novoEstacionamento = new Estacionamento(5, true, true, "MKI-5381", LocalDateTime.now().minusHours(3), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 3.75);
+		Assert.assertFalse(estacionamentoDAO.excluirEstacionemtno(estacionamento));
+		
+		for(Estacionamento estacionamento: listaEstacionamento) {
+			Assert.assertTrue(estacionamentoDAO.excluirEstacionemtno(estacionamento));
+			Assert.assertFalse(estacionamentoDAO.estacionamentoExiste(estacionamento));			
+		}
+		List<Estacionamento> lista = estacionamentoDAO.listarEstacionamento();
+		Assert.assertTrue(lista.isEmpty());		
+	}
+	
+	@Test
+	public void listarEstacionamentoTeste() {
+		List<Estacionamento> lista = estacionamentoDAO.listarEstacionamento();
+		Assert.assertEquals(listaEstacionamento.size(), lista.size());
+		for(Estacionamento estacionamento: lista) {
+			Assert.assertTrue(listaEstacionamento.contains(estacionamento));
+		}
+	}
 }
