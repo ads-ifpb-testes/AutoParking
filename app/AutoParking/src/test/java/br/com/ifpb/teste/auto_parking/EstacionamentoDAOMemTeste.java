@@ -81,7 +81,7 @@ public class EstacionamentoDAOMemTeste {
 		
 		for(Estacionamento estacionamento: listaEstacionamento) {
 			if(!estacionamento.isFinalizado()) {
-				Assert.assertEquals(estacionamento.getId(),estacionamentoDAO.buscarIdPlaca(estacionamento.getPlaca()))
+				Assert.assertEquals(estacionamento.getId(),estacionamentoDAO.buscarIdPlaca(estacionamento.getPlaca()));
 			}
 		}
 		

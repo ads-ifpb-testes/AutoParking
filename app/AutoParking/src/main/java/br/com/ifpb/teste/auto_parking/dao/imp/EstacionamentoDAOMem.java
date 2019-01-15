@@ -63,5 +63,10 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public boolean estacionamentoExiste(Estacionamento estacionamento) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

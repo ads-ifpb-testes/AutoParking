@@ -9,6 +9,7 @@ public interface EstacionamentoDAO {
 	boolean editarEstacionamento(Estacionamento estacionemtno);
 	boolean excluirEstacionemtno(Estacionamento estacionamento);
 	List<Estacionamento> listarEstacionamento();
+	boolean estacionamentoExiste(Estacionamento estacionamento);
 	int registrarEntrada(String placa);
 	int buscarIdPlaca(String placa);
 	Estacionamento buscarEstacionamento(int id);
