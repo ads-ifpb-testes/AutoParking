@@ -2,10 +2,13 @@ package br.com.ifpb.teste.auto_parking;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import br.com.ifpb.teste.auto_parking.dao.imp.EstacionamentoDAOMem;
 import br.com.ifpb.teste.auto_parking.model.Estacionamento;
@@ -36,9 +39,18 @@ public class EstacionamentoDAOMemTeste {
 		estacionamentoDAO = null; 
 	}
 	
-	@Teste
+	@Test
 	public void cadastrarEstacionamentoTeste() {
+		Estacionamento novoEstacionamento = new Estacionamento(4, false, false, "HRL-8233", LocalDateTime.now(), null, null, null);
+		Assert.assertTrue(estacionamentoDAO.cadastrarEstacionamento(novoEstacionamento));
+		List<Estacionamento> lista = estacionamentoDAO.listarEstacionamento();
+		Assert.assertTrue(lista.contains(novoEstacionamento));
 		
+		Assert.assertFalse(estacionamentoDAO.cadastrarEstacionamento(novoEstacionamento));
+		
+		for(Estacionamento estacionamento: listaEstacionamento) {
+			Assert.assertTrue(lista.contains(estacionamento));
+		}
 	}
 
 }
