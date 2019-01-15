@@ -24,7 +24,7 @@ public class EstacionamentoDAOMemTeste {
 	public static void criarEstacionamentos() {
 		//listaEstacionamento.add(new Estacionamento(id, quitado, finalizado, placa, dhChegada, dhPagamento, dhSaida, valor));
 		listaEstacionamento.add(new Estacionamento(1, true, true, "JJK-1373", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 5.5));
-		listaEstacionamento.add(new Estacionamento(2, false, false, "JOE-8330", LocalDateTime.now().minusHours(1), null, null, null));
+		listaEstacionamento.add(new Estacionamento(2, true, false, "JOE-8330", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), null, 7.8));
 		listaEstacionamento.add(new Estacionamento(3, true, false, "EFH-9373", LocalDateTime.now().minusHours(2), LocalDateTime.now().minusMonths(1), LocalDateTime.now(), 5.5));
 		listaEstacionamento.add(new Estacionamento(4, false, false, "JJK-1373", LocalDateTime.now().minusHours(2), null, null, null));
 	}
@@ -33,7 +33,16 @@ public class EstacionamentoDAOMemTeste {
 	public void inicioTeste() {
 		estacionamentoDAO = new EstacionamentoDAOMem();
 		for(Estacionamento estacionamento: listaEstacionamento) {
-			estacionamentoDAO.cadastrarEstacionamento(estacionamento);
+			estacionamentoDAO.cadastrarEstacionamento(
+					new Estacionamento(
+							estacionamento.getId(),
+							estacionamento.isQuitado(),
+							estacionamento.isFinalizado(),
+							estacionamento.getPlaca(),
+							estacionamento.getDhChegada(),
+							estacionamento.getDhPagamento(),
+							estacionamento.getDhSaida(),
+							estacionamento.getValor()));
 		}
 	}
 	
@@ -102,7 +111,7 @@ public class EstacionamentoDAOMemTeste {
 	@Test
 	public void excluirEstacionamentoTeste() {
 		Estacionamento novoEstacionamento = new Estacionamento(5, true, true, "MKI-5381", LocalDateTime.now().minusHours(3), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 3.75);
-		Assert.assertFalse(estacionamentoDAO.excluirEstacionemtno(estacionamento));
+		Assert.assertFalse(estacionamentoDAO.excluirEstacionemtno(novoEstacionamento));
 		
 		for(Estacionamento estacionamento: listaEstacionamento) {
 			Assert.assertTrue(estacionamentoDAO.excluirEstacionemtno(estacionamento));
@@ -119,5 +128,15 @@ public class EstacionamentoDAOMemTeste {
 		for(Estacionamento estacionamento: lista) {
 			Assert.assertTrue(listaEstacionamento.contains(estacionamento));
 		}
+	}
+	
+	@Test 
+	public void autorizarSaidaTeste() {
+		Assert.assertTrue(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(2).getId()));
+		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(2).getId()));
+		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(1).getId()));
+		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(3).getId()));
+		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(4).getId()));
+		
 	}
 }
