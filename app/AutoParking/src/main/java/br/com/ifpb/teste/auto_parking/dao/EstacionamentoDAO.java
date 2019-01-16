@@ -15,5 +15,5 @@ public interface EstacionamentoDAO {
 	Estacionamento buscarEstacionamento(int id);
 	List<Estacionamento> buscarEstacionamento(String placa);
 	boolean autorizarSaida(int id);
-	void finalizarServico(int id);
+	boolean finalizarServico(int id);
 }
