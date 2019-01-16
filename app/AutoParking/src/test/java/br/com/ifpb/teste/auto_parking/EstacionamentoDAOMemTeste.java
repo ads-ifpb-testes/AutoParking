@@ -136,7 +136,6 @@ public class EstacionamentoDAOMemTeste {
 		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(2).getId()));
 		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(1).getId()));
 		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(3).getId()));
-		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(4).getId()));
-		
+		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(4).getId()));		
 	}
 }
