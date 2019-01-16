@@ -59,9 +59,9 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 		return false;
 	}
 
-	public void finalizarServico(int id) {
+	public boolean finalizarServico(int id) {
 		// TODO Auto-generated method stub
-		
+		return false;		
 	}
 
 	public boolean estacionamentoExiste(Estacionamento estacionamento) {
