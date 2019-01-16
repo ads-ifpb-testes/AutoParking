@@ -17,5 +17,10 @@ public class PagamentoDAOMemTeste {
 	public static void criarPagamentos() {
 		listaPagamento.add(new Pagamento(LocalDateTime.now(), 5.5f, 1));
 	}
+	
+	@Before 
+	public void inicioTeste() {
+		pagamentoDAO = new PagamentoDAOMem(clienteDAO, veiculoDAO, precoDAO, estacionamentoDAO)
+	}
 
 }

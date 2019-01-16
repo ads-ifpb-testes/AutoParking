@@ -18,6 +18,4 @@ public interface PagamentoDAO {
 	double calcularTroco(int id, double valorPago);
 	void registrarPagamento(int id);	
 	void incluirCredito(double valor);
-	
-
 }
