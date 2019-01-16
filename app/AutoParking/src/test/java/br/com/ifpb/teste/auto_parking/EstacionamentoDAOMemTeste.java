@@ -144,8 +144,9 @@ public class EstacionamentoDAOMemTeste {
 		Assert.assertFalse(estacionamentoDAO.finalizarServico(1));
 		Assert.assertTrue(estacionamentoDAO.finalizarServico(2));
 		Assert.assertTrue(estacionamentoDAO.finalizarServico(3));
-		Assert.assertTrue(estacionamentoDAO.finalizarServico(4));
+		Assert.assertFalse(estacionamentoDAO.finalizarServico(4));
 		
-		
+		Assert.assertFalse(estacionamentoDAO.finalizarServico(2));
+		Assert.assertFalse(estacionamentoDAO.finalizarServico(3));		
 	}
 }
