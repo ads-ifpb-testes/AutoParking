@@ -149,4 +149,18 @@ public class EstacionamentoDAOMemTeste {
 		Assert.assertFalse(estacionamentoDAO.finalizarServico(2));
 		Assert.assertFalse(estacionamentoDAO.finalizarServico(3));		
 	}
+	
+	@Test
+	public void registrarEntradaTeste() {
+		String placas[] = {"GTJ-3988", "MXG-6312", "JEX-9380", "LXZ-5691", "LXZ-5691"};
+		for(int k = 0 ; k < placas.length; k++) {
+			int id = estacionamentoDAO.registrarEntrada(placas[k]);		
+			Assert.assertNotEquals(0, id);
+			Estacionamento estacionamento = estacionamentoDAO.buscarEstacionamento(id);
+			Assert.assertNotNull(estacionamento);
+			Assert.assertNull(estacionamento.isFinalizado());
+			Assert.assertNull(estacionamento.isQuitado());			
+		}
+	}
+	
 }
