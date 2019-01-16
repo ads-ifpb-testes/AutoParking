@@ -138,4 +138,14 @@ public class EstacionamentoDAOMemTeste {
 		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(3).getId()));
 		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(4).getId()));		
 	}
+	
+	@Test
+	public void finalizarServicoTeste() {
+		Assert.assertFalse(estacionamentoDAO.finalizarServico(1));
+		Assert.assertTrue(estacionamentoDAO.finalizarServico(2));
+		Assert.assertTrue(estacionamentoDAO.finalizarServico(3));
+		Assert.assertTrue(estacionamentoDAO.finalizarServico(4));
+		
+		
+	}
 }
