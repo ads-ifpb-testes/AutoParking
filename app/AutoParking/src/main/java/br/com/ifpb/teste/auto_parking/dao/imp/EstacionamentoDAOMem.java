@@ -1,5 +1,6 @@
 package br.com.ifpb.teste.auto_parking.dao.imp;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -47,13 +48,26 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 				return 0;
 		}
 		Estacionamento novoEstacionamento = new Estacionamento(proximoNumeroId(), placa);
-		if (!cadastrarEstacionamento(novoEstacionamento));
+		if (!cadastrarEstacionamento(novoEstacionamento))
 			return 0;
 		return novoEstacionamento.getId();
 	}
 
+	private int proximoNumeroId() {
+		ArrayList<Estacionamento> lista = new ArrayList<Estacionamento>(estacionamentos);
+		int maior = 0;
+		for(Estacionamento estacionamento: lista) {
+			maior = (maior > estacionamento.getId())?maior:estacionamento.getId();
+		}		
+		return ++maior;
+	}
+
 	public int buscarIdPlaca(String placa) {
-		// TODO Auto-generated method stub
+		ArrayList<Estacionamento> lista = new ArrayList<Estacionamento>(estacionamentos);
+		for(Estacionamento estacionamento: lista) {
+			if((!estacionamento.isFinalizado())&&(estacionamento.getPlaca().equals(placa)))
+				return estacionamento.getId();
+		}
 		return 0;
 	}
 
@@ -78,8 +92,14 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	}
 
 	public boolean autorizarSaida(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Estacionamento estacionamento = buscarEstacionamento(id);
+		if (estacionamento == null)
+			return false;
+		boolean sair = true;
+		sair = sair && (!estacionamento.isFinalizado());
+		sair = sair && (estacionamento.isQuitado());
+		sair = sair && (estacionamento.getDhPagamento().plusMinutes(30).isAfter(LocalDateTime.now()));
+		return sair;
 	}
 
 	public boolean finalizarServico(int id) {
