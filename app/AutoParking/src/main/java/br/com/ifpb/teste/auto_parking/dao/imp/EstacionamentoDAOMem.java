@@ -46,7 +46,11 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	}
 
 	public Estacionamento buscarEstacionamento(int id) {
-		// TODO Auto-generated method stub
+		ArrayList<Estacionamento> lista = new ArrayList<Estacionamento>(estacionamentos);
+		for (Estacionamento estacionamento: lista) {
+			if(estacionamento.getId()==id)
+				return estacionamento;
+		}
 		return null;
 	}
 
