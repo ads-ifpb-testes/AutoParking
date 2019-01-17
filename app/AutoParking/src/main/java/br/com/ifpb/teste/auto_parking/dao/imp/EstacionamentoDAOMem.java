@@ -16,13 +16,17 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	}
 
 	public boolean cadastrarEstacionamento(Estacionamento estacionamento) {
-		// TODO Auto-generated method stub
-		return false;
+		if (estacionamentoExiste(estacionamento))
+			return false;
+		return estacionamentos.add(estacionamento);
 	}
 
-	public boolean editarEstacionamento(Estacionamento estacionemtno) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean editarEstacionamento(Estacionamento estacionamento) {
+		if(!estacionamentoExiste(estacionamento))
+			return false;
+		if(!excluirEstacionemtno(estacionamento))
+			return false;
+		return cadastrarEstacionamento(estacionamento);
 	}
 
 	public boolean excluirEstacionemtno(Estacionamento estacionamento) {
