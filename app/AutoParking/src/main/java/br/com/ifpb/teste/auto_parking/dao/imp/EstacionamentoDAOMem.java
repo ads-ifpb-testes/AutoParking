@@ -30,8 +30,9 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	}
 
 	public boolean excluirEstacionemtno(Estacionamento estacionamento) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!estacionamentoExiste(estacionamento))
+			return false;
+		return estacionamentos.remove(estacionamento);
 	}
 
 	public List<Estacionamento> listarEstacionamento() {
