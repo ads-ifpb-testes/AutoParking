@@ -1,5 +1,6 @@
 package br.com.ifpb.teste.auto_parking.dao.imp;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	}
 
 	public List<Estacionamento> listarEstacionamento() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Estacionamento> lista = new ArrayList<Estacionamento>(estacionamentos);		
+		return lista;
 	}
 
 	public int registrarEntrada(String placa) {
