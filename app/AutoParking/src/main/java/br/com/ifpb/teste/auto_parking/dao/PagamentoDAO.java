@@ -9,7 +9,7 @@ public interface PagamentoDAO {
 	boolean cadastrarPagamento(Pagamento pagamento);
 	boolean editarPagamento(Pagamento pagamento);
 	boolean excluirPagamento(Pagamento pagamento);
-	List<Pagamento> buscarPagamento(int id);
+	Pagamento buscarPagamento(int id);
 	List<Pagamento> buscarPagamentoCpf(String  cpf);
 	List<Pagamento> buscarPagamentoPlaca(String  placa);	
 	List<Pagamento> listarPagamento();

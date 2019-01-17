@@ -8,10 +8,10 @@ import br.com.ifpb.teste.auto_parking.model.Estacionamento;
 
 public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	
-	private HashSet<Estacionamento> estacionamento = null;
+	private HashSet<Estacionamento> estacionamentos = null;
 	
 	public EstacionamentoDAOMem() {
-		estacionamento = new HashSet<Estacionamento>(); 		
+		estacionamentos = new HashSet<Estacionamento>(); 		
 	}
 
 	public boolean cadastrarEstacionamento(Estacionamento estacionamento) {
@@ -64,9 +64,8 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 		return false;		
 	}
 
-	public boolean estacionamentoExiste(Estacionamento estacionamento) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean estacionamentoExiste(Estacionamento estacionamento) {		
+		return estacionamentos.contains(estacionamento) ;
 	}
 	
 }

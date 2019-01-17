@@ -63,7 +63,7 @@ public class PagamentoDAOMem implements PagamentoDAO {
 		return false;
 	}
 
-	public List<Pagamento> buscarPagamento(int id) {
+	public Pagamento buscarPagamento(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
