@@ -103,8 +103,14 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	}
 
 	public boolean finalizarServico(int id) {
-		// TODO Auto-generated method stub
-		return false;		
+		Estacionamento estacionamento = buscarEstacionamento(id);
+		if (estacionamento == null)
+			return false;
+		if(!autorizarSaida(id))
+			return false;
+		estacionamento.setFinalizado(true);
+		estacionamento.setDhSaida(LocalDateTime.now());
+		return editarEstacionamento(estacionamento);
 	}
 
 	public boolean estacionamentoExiste(Estacionamento estacionamento) {		
