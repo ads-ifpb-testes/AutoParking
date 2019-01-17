@@ -55,8 +55,14 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	}
 
 	public List<Estacionamento> buscarEstacionamento(String placa) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Estacionamento> lista = new ArrayList<Estacionamento>(estacionamentos);
+		ArrayList<Estacionamento> rspLista = new ArrayList<Estacionamento>();				
+		for (Estacionamento estacionamento: lista) {
+			if(estacionamento.getPlaca().equals(placa)) {
+				rspLista.add(estacionamento)				
+			}
+		}
+		return rspLista;
 	}
 
 	public boolean autorizarSaida(int id) {
