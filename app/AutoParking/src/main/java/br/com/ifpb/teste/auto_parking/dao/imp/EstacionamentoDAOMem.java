@@ -41,8 +41,15 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	}
 
 	public int registrarEntrada(String placa) {
-		// TODO Auto-generated method stub
-		return 0;
+		List<Estacionamento> lista = buscarEstacionamento(placa);
+		for(Estacionamento estacionamento: lista) {
+			if ((!estacionamento.isFinalizado()) && (estacionamento.getPlaca().equals(placa)))
+				return 0;
+		}
+		Estacionamento novoEstacionamento = new Estacionamento(proximoNumeroId(), placa);
+		if (!cadastrarEstacionamento(novoEstacionamento));
+			return 0;
+		return novoEstacionamento.getId();
 	}
 
 	public int buscarIdPlaca(String placa) {
@@ -64,7 +71,7 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 		ArrayList<Estacionamento> rspLista = new ArrayList<Estacionamento>();				
 		for (Estacionamento estacionamento: lista) {
 			if(estacionamento.getPlaca().equals(placa)) {
-				rspLista.add(estacionamento)				
+				rspLista.add(estacionamento);				
 			}
 		}
 		return rspLista;
