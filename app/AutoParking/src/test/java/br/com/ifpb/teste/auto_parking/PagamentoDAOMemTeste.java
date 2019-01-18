@@ -82,5 +82,16 @@ public class PagamentoDAOMemTeste {
 		}
 		Assert.assertNull(pagamentoDAO.buscarPagamento(10));
 	}
+	
+	@Test
+	public void buscarPagamentoCpfTeste() {
+		for(Pagamento pagamento: listaPagamento) {
+			if(pagamento.getTipoPagamento() == TipoPagamento.CREDITO) {
+				Assert.assertEquals(pagamento, pagamentoDAO.buscarPagamentoCpf(pagamento.getCpfCliente()));
+			}
+		}
+		
+		Assert.assertNull(pagamentoDAO.buscarPagamentoCpf("000.000.000-00"));
+	}
 
 }
