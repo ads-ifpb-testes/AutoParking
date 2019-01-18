@@ -97,7 +97,7 @@ public class EstacionamentoDAOMem implements EstacionamentoDAO {
 			return false;
 		boolean sair = true;
 		sair = sair && (!estacionamento.isFinalizado());
-		sair = sair && (estacionamento.isQuitado());
+		sair = sair && (estacionamento.isQuitado());		
 		sair = sair && (estacionamento.getDhPagamento().plusMinutes(30).isAfter(LocalDateTime.now()));
 		return sair;
 	}

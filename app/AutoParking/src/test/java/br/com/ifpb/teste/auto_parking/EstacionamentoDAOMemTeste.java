@@ -24,8 +24,8 @@ public class EstacionamentoDAOMemTeste {
 	public static void criarEstacionamentos() {
 		//listaEstacionamento.add(new Estacionamento(id, quitado, finalizado, placa, dhChegada, dhPagamento, dhSaida, valor));
 		listaEstacionamento.add(new Estacionamento(1, true, true, "JJK-1373", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 5.5));
-		listaEstacionamento.add(new Estacionamento(2, true, false, "JOE-8330", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), null, 7.8));
-		listaEstacionamento.add(new Estacionamento(3, true, false, "EFH-9373", LocalDateTime.now().minusHours(2), LocalDateTime.now().minusMonths(1), LocalDateTime.now(), 5.5));
+		listaEstacionamento.add(new Estacionamento(2, true, false, "JOE-8330", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(29), null, 7.8));
+		listaEstacionamento.add(new Estacionamento(3, true, false, "EFH-9373", LocalDateTime.now().minusHours(2), LocalDateTime.now().minusMonths(1), null, 5.5));
 		listaEstacionamento.add(new Estacionamento(4, false, false, "JJK-1373", LocalDateTime.now().minusHours(2), null, null, null));
 	}
 	
@@ -132,34 +132,32 @@ public class EstacionamentoDAOMemTeste {
 	
 	@Test 
 	public void autorizarSaidaTeste() {
-		Assert.assertTrue(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(2).getId()));
-		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(2).getId()));
-		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(1).getId()));
-		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(3).getId()));
-		Assert.assertFalse(estacionamentoDAO.autorizarSaida(listaEstacionamento.get(4).getId()));		
+		Assert.assertTrue(estacionamentoDAO.autorizarSaida(2));
+		Assert.assertFalse(estacionamentoDAO.autorizarSaida(1));
+		Assert.assertFalse(estacionamentoDAO.autorizarSaida(3));
+		Assert.assertFalse(estacionamentoDAO.autorizarSaida(4));		
 	}
 	
 	@Test
 	public void finalizarServicoTeste() {
 		Assert.assertFalse(estacionamentoDAO.finalizarServico(1));
 		Assert.assertTrue(estacionamentoDAO.finalizarServico(2));
-		Assert.assertTrue(estacionamentoDAO.finalizarServico(3));
+		Assert.assertFalse(estacionamentoDAO.finalizarServico(3));
 		Assert.assertFalse(estacionamentoDAO.finalizarServico(4));
 		
-		Assert.assertFalse(estacionamentoDAO.finalizarServico(2));
-		Assert.assertFalse(estacionamentoDAO.finalizarServico(3));		
+		Assert.assertFalse(estacionamentoDAO.finalizarServico(2));		
 	}
 	
 	@Test
 	public void registrarEntradaTeste() {
-		String placas[] = {"GTJ-3988", "MXG-6312", "JEX-9380", "LXZ-5691", "LXZ-5691"};
+		String placas[] = {"GTJ-3988", "MXG-6312", "JEX-9380", "LXZ-5691", "LGX-2339"};
 		for(int k = 0 ; k < placas.length; k++) {
-			int id = estacionamentoDAO.registrarEntrada(placas[k]);		
+			int id = estacionamentoDAO.registrarEntrada(placas[k]);			
 			Assert.assertNotEquals(0, id);
 			Estacionamento estacionamento = estacionamentoDAO.buscarEstacionamento(id);
 			Assert.assertNotNull(estacionamento);
-			Assert.assertNull(estacionamento.isFinalizado());
-			Assert.assertNull(estacionamento.isQuitado());			
+			Assert.assertFalse(estacionamento.isFinalizado());
+			Assert.assertFalse(estacionamento.isQuitado());			
 		}
 	}
 	
