@@ -5,8 +5,10 @@ import static org.mockito.Mockito.mock;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import br.com.ifpb.teste.auto_parking.dao.ClienteDAO;
 import br.com.ifpb.teste.auto_parking.dao.EstacionamentoDAO;
@@ -19,6 +21,10 @@ public class PagamentoDAOMemTeste {
 	
 	private static ArrayList<Pagamento> listaPagamento = new ArrayList<Pagamento>();
 	private PagamentoDAOMem pagamentoDAO = null;
+	ClienteDAO clienteDAOMock = null;
+	VeiculoDAO veiculoDAOMock = null;
+	PrecoDAO precoDAOMock = null;
+	EstacionamentoDAO estacionamentoDAOMock = null;
 	
 	@BeforeClass
 	public static void criarPagamentos() {
@@ -27,12 +33,22 @@ public class PagamentoDAOMemTeste {
 	
 	@Before 
 	public void inicioTeste() {
-		ClienteDAO clienteDAOMock = mock(ClienteDAO.class);
-		VeiculoDAO veiculoDAOMock = mock(VeiculoDAO.class);
-		PrecoDAO precoDAOMock = mock(PrecoDAO.class);
-		EstacionamentoDAO estacionamentoDAOMock = mock(EstacionamentoDAO.class);
+		clienteDAOMock = mock(ClienteDAO.class);
+		veiculoDAOMock = mock(VeiculoDAO.class);
+		precoDAOMock = mock(PrecoDAO.class);
+		estacionamentoDAOMock = mock(EstacionamentoDAO.class);
 		
 		pagamentoDAO = new PagamentoDAOMem(clienteDAOMock, veiculoDAOMock, precoDAOMock, estacionamentoDAOMock);
+	}
+	
+	@After
+	public void finalTeste() {
+		clienteDAOMock = null;
+		veiculoDAOMock = null;
+		precoDAOMock = null;
+		estacionamentoDAOMock = null;
+		
+		pagamentoDAO = new PagamentoDAOMem(clienteDAOMock, veiculoDAOMock, precoDAOMock, estacionamentoDAOMock);		
 	}
 
 }
