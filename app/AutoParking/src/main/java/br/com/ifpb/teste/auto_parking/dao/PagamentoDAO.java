@@ -5,7 +5,7 @@ import java.util.List;
 import br.com.ifpb.teste.auto_parking.model.Pagamento;
 
 public interface PagamentoDAO {
-	
+	boolean pagamentoExiste(Pagamento pagamento);
 	boolean cadastrarPagamento(Pagamento pagamento);
 	boolean excluirPagamento(Pagamento pagamento);
 	Pagamento buscarPagamento(int id);

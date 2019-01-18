@@ -22,6 +22,11 @@ public class PagamentoDAOMem implements PagamentoDAO {
 		this.veiculoDAO = veiculoDAO;
 		pagamentos = new HashSet<Pagamento>();
 	}
+	
+	public boolean pagamentoExiste(Pagamento pagamento) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	public void gerarValor(int id) {
 		// TODO Auto-generated method stub

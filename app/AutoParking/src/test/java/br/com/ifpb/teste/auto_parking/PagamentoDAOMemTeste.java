@@ -144,7 +144,6 @@ public class PagamentoDAOMemTeste {
 		when(precoDAOMock.calcularPreco(60)).thenReturn(15.8f);
 		Assert.assertEquals(20f - 15.8f, pagamentoDAO.calcularTroco(1, 20),0.01f);
 	}
-	
 		
 	
 }
