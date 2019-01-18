@@ -30,6 +30,11 @@ public class PagamentoDAOMemTeste {
 	@BeforeClass
 	public static void criarPagamentos() {
 		listaPagamento.add(new Pagamento(LocalDateTime.now(), 5.5f, 1));
+		listaPagamento.add(new Pagamento(LocalDateTime.now(), 12.5f, 2));
+		listaPagamento.add(new Pagamento(LocalDateTime.now(), 45.5f, 3));
+		listaPagamento.add(new Pagamento(LocalDateTime.now(), 5.5f, "431.201.150-88"));
+		listaPagamento.add(new Pagamento(LocalDateTime.now(), 50.0f, "322.258.588-10"));
+		listaPagamento.add(new Pagamento(LocalDateTime.now(), 125.0f, "599.837.460-69"));		
 	}
 	
 	@Before 
@@ -40,6 +45,10 @@ public class PagamentoDAOMemTeste {
 		estacionamentoDAOMock = mock(EstacionamentoDAO.class);
 		
 		pagamentoDAO = new PagamentoDAOMem(clienteDAOMock, veiculoDAOMock, precoDAOMock, estacionamentoDAOMock);
+		
+		for(Pagamento pagamento: listaPagamento) {
+			pagamentoDAO.cadastrarPagamento(pagamento);
+		}
 	}
 	
 	@After
@@ -55,11 +64,12 @@ public class PagamentoDAOMemTeste {
 	@Test
 	public void cadastrarPagamentoTeste() {
 		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 1);
-		Pagamento pag2 = new Pagamento(LocalDateTime.now(), 5.5, "858.209.873-14");
+		Pagamento pag2 = new Pagamento(LocalDateTime.now(), 10.5, 4);
+		Pagamento pag3 = new Pagamento(LocalDateTime.now(), 5.5, "858.209.873-14");
 		
-		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag1));
-		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag2));		
-		
+		Assert.assertFalse(pagamentoDAO.cadastrarPagamento(pag1));
+		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag2));
+		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag3));		
 	}
 
 }
