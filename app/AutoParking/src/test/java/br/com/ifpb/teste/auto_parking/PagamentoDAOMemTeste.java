@@ -17,6 +17,7 @@ import br.com.ifpb.teste.auto_parking.dao.PrecoDAO;
 import br.com.ifpb.teste.auto_parking.dao.VeiculoDAO;
 import br.com.ifpb.teste.auto_parking.dao.imp.PagamentoDAOMem;
 import br.com.ifpb.teste.auto_parking.model.Pagamento;
+import br.com.ifpb.teste.auto_parking.model.Pagamento.TipoPagamento;
 
 public class PagamentoDAOMemTeste {
 	
@@ -70,6 +71,16 @@ public class PagamentoDAOMemTeste {
 		Assert.assertFalse(pagamentoDAO.cadastrarPagamento(pag1));
 		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag2));
 		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag3));		
+	}
+	
+	@Test
+	public void buscarPagamentoIdTeste() {
+		for(Pagamento pagamento: listaPagamento) {
+			if(pagamento.getTipoPagamento()==TipoPagamento.AVULSO) {
+				Assert.assertEquals(pagamento, pagamentoDAO.buscarPagamento(pagamento.getIdServico()));
+			}				
+		}
+		Assert.assertNull(pagamentoDAO.buscarPagamento(10));
 	}
 
 }
