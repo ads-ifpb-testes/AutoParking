@@ -1,9 +1,11 @@
 package br.com.ifpb.teste.auto_parking;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -37,7 +39,7 @@ public class PagamentoDAOMemTeste {
 	
 	@BeforeClass
 	public static void criarPagamentos() {
-		//Precos
+		/*//Precos
 		listaPreco.add(new Preco(true, 0, 0, 5.5f));       //   valor fixo
 		listaPreco.add(new Preco(false, 31, 60, 10.3f));   //  31 ~ 60  minutos
 		listaPreco.add(new Preco(false, 61, 120, 9.5f));   //  61 ~ 120 minutos
@@ -60,6 +62,7 @@ public class PagamentoDAOMemTeste {
 		listaEstacionamento.add(new Estacionamento(2, true, false, "MOK-4656", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(29), null, 7.8));
 		listaEstacionamento.add(new Estacionamento(3, true, false, "NAA-1077", LocalDateTime.now().minusHours(2), LocalDateTime.now().minusMonths(1), null, 5.5));
 		listaEstacionamento.add(new Estacionamento(4, false, false, "JJK-1373", LocalDateTime.now().minusHours(2), null, null, null));
+		*/
 		//Pagamento		
 		listaPagamento.add(new Pagamento(LocalDateTime.now(), 5.5f, 1));
 		listaPagamento.add(new Pagamento(LocalDateTime.now(), 7.8f, 2));
@@ -121,9 +124,18 @@ public class PagamentoDAOMemTeste {
 			if(pagamento.getTipoPagamento() == TipoPagamento.CREDITO) {
 				Assert.assertEquals(pagamento, pagamentoDAO.buscarPagamentoCpf(pagamento.getCpfCliente()));
 			}
-		}
-		
+		}		
 		Assert.assertNull(pagamentoDAO.buscarPagamentoCpf("000.000.000-00"));
 	}
+	
+	@Test
+	public void buscarPagamentoPlacaTeste() {
+		Estacionamento estacionamento1 = new Estacionamento(1, true, true, "LWG-4724", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 5.5);
+		when(estacionamentoDAOMock.buscarIdPlaca("LWG-4724")).thenReturn(estacionamento1.getId());	
+		List<Pagamento> pagamentos =  pagamentoDAO.buscarPagamentoPlaca("LWG-4724");
+		Assert.assertEquals(1,pagamentos.size());
+		Assert.assertEquals(1, pagamentos.get(0).getIdServico());
+	}
+	
 	
 }
