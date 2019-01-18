@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -49,6 +50,16 @@ public class PagamentoDAOMemTeste {
 		estacionamentoDAOMock = null;
 		
 		pagamentoDAO = new PagamentoDAOMem(clienteDAOMock, veiculoDAOMock, precoDAOMock, estacionamentoDAOMock);		
+	}
+	
+	@Test
+	public void cadastrarPagamentoTeste() {
+		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 1);
+		Pagamento pag2 = new Pagamento(LocalDateTime.now(), 5.5, "858.209.873-14");
+		
+		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag1));
+		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag2));		
+		
 	}
 
 }
