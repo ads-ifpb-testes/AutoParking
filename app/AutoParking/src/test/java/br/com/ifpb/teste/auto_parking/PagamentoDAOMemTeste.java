@@ -145,7 +145,6 @@ public class PagamentoDAOMemTeste {
 		Assert.assertEquals(20f - 15.8f, pagamentoDAO.calcularTroco(1, 20),0.01f);
 	}
 	
-	
-	
+		
 	
 }
