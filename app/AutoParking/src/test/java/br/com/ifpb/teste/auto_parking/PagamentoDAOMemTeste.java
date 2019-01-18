@@ -137,5 +137,15 @@ public class PagamentoDAOMemTeste {
 		Assert.assertEquals(1, pagamentos.get(0).getIdServico());
 	}
 	
+	@Test
+	public void calcularTrocoTeste() {
+		Estacionamento estacionamento1 = new Estacionamento(1, true, false, "LWG-4724", LocalDateTime.now().minusHours(1), null, null, null);
+		when(estacionamentoDAOMock.buscarEstacionamento(1)).thenReturn(estacionamento1);
+		when(precoDAOMock.calcularPreco(60)).thenReturn(15.8f);
+		Assert.assertEquals(20f - 15.8f, pagamentoDAO.calcularTroco(1, 20),0.01f);
+	}
+	
+	
+	
 	
 }
