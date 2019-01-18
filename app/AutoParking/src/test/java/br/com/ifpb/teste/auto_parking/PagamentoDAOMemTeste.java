@@ -144,6 +144,17 @@ public class PagamentoDAOMemTeste {
 		when(precoDAOMock.calcularPreco(60)).thenReturn(15.8f);
 		Assert.assertEquals(20f - 15.8f, pagamentoDAO.calcularTroco(1, 20),0.01f);
 	}
+	
+	@Test
+	public void pagamentoExisteTeste() {
+		for(Pagamento pagamento: listaPagamento) {
+			Assert.assertTrue(pagamentoDAO.pagamentoExiste(pagamento));
+		}
+		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 6);
+		Assert.assertFalse(Assert.assertFalse(pagamentoDAO.pagamentoExiste(pag1)));
+	}
+	
+	
 		
 	
 }
