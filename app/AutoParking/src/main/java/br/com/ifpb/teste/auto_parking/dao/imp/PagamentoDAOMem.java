@@ -53,11 +53,6 @@ public class PagamentoDAOMem implements PagamentoDAO {
 		return false;
 	}
 
-	public boolean editarPagamento(Pagamento pagamento) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	public boolean excluirPagamento(Pagamento pagamento) {
 		// TODO Auto-generated method stub
 		return false;

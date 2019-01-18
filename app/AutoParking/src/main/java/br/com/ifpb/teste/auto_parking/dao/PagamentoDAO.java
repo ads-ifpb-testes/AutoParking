@@ -7,7 +7,6 @@ import br.com.ifpb.teste.auto_parking.model.Pagamento;
 public interface PagamentoDAO {
 	
 	boolean cadastrarPagamento(Pagamento pagamento);
-	boolean editarPagamento(Pagamento pagamento);
 	boolean excluirPagamento(Pagamento pagamento);
 	Pagamento buscarPagamento(int id);
 	List<Pagamento> buscarPagamentoCpf(String  cpf);
