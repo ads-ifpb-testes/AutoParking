@@ -163,4 +163,13 @@ public class PagamentoDAOMemTeste {
 		}
 	}
 	
+	@Test
+	public void incluirCreditoTeste() {
+		Cliente cliente1 = new Cliente("Bruno Raimundo Isaac da Silva", "858.209.873-14");
+		cliente1.setCredito(100.0);
+		when(clienteDAOMock.buscarCliente("858.209.873-14")).thenReturn(cliente1);
+		pagamentoDAO.incluirCredito("858.209.873-14", 50.0);
+		Assert.assertEquals(150.0, cliente1.getCredito(),0.01);
+	}
+	
 }
