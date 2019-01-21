@@ -12,9 +12,8 @@ public interface PagamentoDAO {
 	List<Pagamento> buscarPagamentoCpf(String  cpf);
 	List<Pagamento> buscarPagamentoPlaca(String  placa);	
 	List<Pagamento> listarPagamento();
-	void gerarValor(int id);
 	double valorDevido(int id);
 	double calcularTroco(int id, double valorPago);
 	void registrarPagamento(int id);	
-	void incluirCredito(double valor);
+	void incluirCredito(String cpf, double valor);
 }

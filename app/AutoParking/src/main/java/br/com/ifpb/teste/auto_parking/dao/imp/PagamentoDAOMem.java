@@ -28,11 +28,6 @@ public class PagamentoDAOMem implements PagamentoDAO {
 		return false;
 	}
 
-	public void gerarValor(int id) {
-		// TODO Auto-generated method stub
-
-	}
-
 	public double valorDevido(int id) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -48,7 +43,7 @@ public class PagamentoDAOMem implements PagamentoDAO {
 
 	}
 
-	public void incluirCredito(double valor) {
+	public void incluirCredito(String cpf, double valor) {
 		// TODO Auto-generated method stub
 
 	}
