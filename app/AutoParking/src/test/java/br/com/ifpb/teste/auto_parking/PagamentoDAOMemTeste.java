@@ -154,7 +154,13 @@ public class PagamentoDAOMemTeste {
 		Assert.assertFalse(Assert.assertFalse(pagamentoDAO.pagamentoExiste(pag1)));
 	}
 	
-	
-		
+	@Test
+	public void excluirPagamentoTeste() {
+		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 1);
+		Assert.assertFalse(pagamentoDAO.excluirPagamento(pag1));
+		for(Pagamento pagamento: listaPagamento) {
+			Assert.assertTrue(pagamentoDAO.excluirPagamento(pagamento));
+		}
+	}
 	
 }
