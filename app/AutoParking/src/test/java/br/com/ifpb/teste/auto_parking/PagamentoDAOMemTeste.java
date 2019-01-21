@@ -197,4 +197,5 @@ public class PagamentoDAOMemTeste {
 		Assert.assertEquals(0, pag1.getDhPagamento().compareTo(estacionamento1.getDhPagamento()));		
 	}
 	
+	
 }
