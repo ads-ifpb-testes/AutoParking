@@ -172,4 +172,14 @@ public class PagamentoDAOMemTeste {
 		Assert.assertEquals(150.0, cliente1.getCredito(),0.01);
 	}
 	
+	@Test
+	public void listarPagamentoTeste() {
+		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 1);
+		Assert.assertFalse(listaPagamento.contains(pag1));
+		List<Pagamento> lista = pagamentoDAO.listarPagamento();
+		for (Pagamento pagamento: lista) {
+			Assert.assertTrue(listaPagamento.contains(pagamento));
+		}
+	}
+	
 }
