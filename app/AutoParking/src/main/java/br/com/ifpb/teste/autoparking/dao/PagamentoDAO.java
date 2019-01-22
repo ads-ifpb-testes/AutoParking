@@ -1,8 +1,8 @@
-package br.com.ifpb.teste.auto_parking.dao;
+package br.com.ifpb.teste.autoparking.dao;
 
 import java.util.List;
 
-import br.com.ifpb.teste.auto_parking.model.Pagamento;
+import br.com.ifpb.teste.autoparking.model.Pagamento;
 
 public interface PagamentoDAO {
 	boolean pagamentoExiste(Pagamento pagamento);

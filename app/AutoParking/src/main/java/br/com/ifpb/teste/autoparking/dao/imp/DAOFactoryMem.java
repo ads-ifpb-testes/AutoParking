@@ -1,11 +1,11 @@
-package br.com.ifpb.teste.auto_parking.dao.imp;
+package br.com.ifpb.teste.autoparking.dao.imp;
 
-import br.com.ifpb.teste.auto_parking.dao.ClienteDAO;
-import br.com.ifpb.teste.auto_parking.dao.EstacionamentoDAO;
-import br.com.ifpb.teste.auto_parking.dao.PagamentoDAO;
-import br.com.ifpb.teste.auto_parking.dao.PrecoDAO;
-import br.com.ifpb.teste.auto_parking.dao.VeiculoDAO;
-import br.com.ifpb.teste.auto_parking.factory.DAOAbstractFactory;
+import br.com.ifpb.teste.autoparking.dao.ClienteDAO;
+import br.com.ifpb.teste.autoparking.dao.EstacionamentoDAO;
+import br.com.ifpb.teste.autoparking.dao.PagamentoDAO;
+import br.com.ifpb.teste.autoparking.dao.PrecoDAO;
+import br.com.ifpb.teste.autoparking.dao.VeiculoDAO;
+import br.com.ifpb.teste.autoparking.factory.DAOAbstractFactory;
 
 public class DAOFactoryMem implements DAOAbstractFactory{
 	

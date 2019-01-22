@@ -1,6 +1,6 @@
-package br.com.ifpb.teste.auto_parking.factory;
+package br.com.ifpb.teste.autoparking.factory;
 
-import br.com.ifpb.teste.auto_parking.dao.imp.DAOFactoryMem;
+import br.com.ifpb.teste.autoparking.dao.imp.DAOFactoryMem;
 
 public class DAOFactorry {
 	public enum FactoryType{MEM, JDBC}

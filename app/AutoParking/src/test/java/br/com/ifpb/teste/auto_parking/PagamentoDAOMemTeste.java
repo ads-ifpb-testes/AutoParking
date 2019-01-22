@@ -13,17 +13,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.ifpb.teste.auto_parking.dao.ClienteDAO;
-import br.com.ifpb.teste.auto_parking.dao.EstacionamentoDAO;
-import br.com.ifpb.teste.auto_parking.dao.PrecoDAO;
-import br.com.ifpb.teste.auto_parking.dao.VeiculoDAO;
-import br.com.ifpb.teste.auto_parking.dao.imp.PagamentoDAOMem;
-import br.com.ifpb.teste.auto_parking.model.Cliente;
-import br.com.ifpb.teste.auto_parking.model.Estacionamento;
-import br.com.ifpb.teste.auto_parking.model.Pagamento;
-import br.com.ifpb.teste.auto_parking.model.Pagamento.TipoPagamento;
-import br.com.ifpb.teste.auto_parking.model.Preco;
-import br.com.ifpb.teste.auto_parking.model.Veiculo;
+import br.com.ifpb.teste.autoparking.dao.ClienteDAO;
+import br.com.ifpb.teste.autoparking.dao.EstacionamentoDAO;
+import br.com.ifpb.teste.autoparking.dao.PrecoDAO;
+import br.com.ifpb.teste.autoparking.dao.VeiculoDAO;
+import br.com.ifpb.teste.autoparking.dao.imp.PagamentoDAOMem;
+import br.com.ifpb.teste.autoparking.model.Cliente;
+import br.com.ifpb.teste.autoparking.model.Estacionamento;
+import br.com.ifpb.teste.autoparking.model.Pagamento;
+import br.com.ifpb.teste.autoparking.model.Pagamento.TipoPagamento;
+import br.com.ifpb.teste.autoparking.model.Preco;
+import br.com.ifpb.teste.autoparking.model.Veiculo;
 
 public class PagamentoDAOMemTeste {
 	private static ArrayList<Preco> listaPreco = new ArrayList<Preco>();
@@ -172,7 +172,8 @@ public class PagamentoDAOMemTeste {
 		Assert.assertEquals(150.0, cliente1.getCredito(),0.01);
 	}
 	
-	@Test
+	@Testionamento(1, true, true, "JJK-1373", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 5.5));
+	listaEstacionamento.add(new Estacionamento(2, true, false, "JOE-8330", Lo
 	public void listarPagamentoTeste() {
 		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 1);
 		Assert.assertFalse(listaPagamento.contains(pag1));

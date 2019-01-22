@@ -1,12 +1,12 @@
-package br.com.ifpb.teste.auto_parking.dao.imp;
+package br.com.ifpb.teste.autoparking.dao.imp;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import br.com.ifpb.teste.auto_parking.dao.EstacionamentoDAO;
-import br.com.ifpb.teste.auto_parking.model.Estacionamento;
+import br.com.ifpb.teste.autoparking.dao.EstacionamentoDAO;
+import br.com.ifpb.teste.autoparking.model.Estacionamento;
 
 public class EstacionamentoDAOMem implements EstacionamentoDAO {
 	

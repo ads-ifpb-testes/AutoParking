@@ -1,4 +1,4 @@
-package br.com.ifpb.teste.auto_parking.model;
+package br.com.ifpb.teste.autoparking.model;
 
 public class Veiculo {
 	private String cpfProprietario;

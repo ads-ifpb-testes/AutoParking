@@ -1,4 +1,4 @@
-package br.com.ifpb.teste.auto_parking;
+package br.com.ifpb.teste.autoparking;
 
 /**
  * Hello world!

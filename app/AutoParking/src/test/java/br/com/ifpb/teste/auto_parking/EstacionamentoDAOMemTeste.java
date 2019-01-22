@@ -12,8 +12,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.ifpb.teste.auto_parking.dao.imp.EstacionamentoDAOMem;
-import br.com.ifpb.teste.auto_parking.model.Estacionamento;
+import br.com.ifpb.teste.autoparking.dao.imp.EstacionamentoDAOMem;
+import br.com.ifpb.teste.autoparking.model.Estacionamento;
 
 public class EstacionamentoDAOMemTeste {
 

@@ -11,8 +11,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.ifpb.teste.auto_parking.dao.imp.PrecoDAOMem;
-import br.com.ifpb.teste.auto_parking.model.Preco;
+import br.com.ifpb.teste.autoparking.dao.imp.PrecoDAOMem;
+import br.com.ifpb.teste.autoparking.model.Preco;
 
 public class PrecoDAOMemTeste {
 	

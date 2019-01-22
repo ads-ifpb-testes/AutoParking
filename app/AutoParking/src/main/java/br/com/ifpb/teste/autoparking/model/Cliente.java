@@ -1,4 +1,4 @@
-package br.com.ifpb.teste.auto_parking.model;
+package br.com.ifpb.teste.autoparking.model;
 
 import java.util.List;
 

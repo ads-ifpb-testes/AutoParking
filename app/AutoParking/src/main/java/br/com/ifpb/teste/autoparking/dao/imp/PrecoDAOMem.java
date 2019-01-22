@@ -1,11 +1,11 @@
-package br.com.ifpb.teste.auto_parking.dao.imp;
+package br.com.ifpb.teste.autoparking.dao.imp;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import br.com.ifpb.teste.auto_parking.dao.PrecoDAO;
-import br.com.ifpb.teste.auto_parking.model.Preco;
+import br.com.ifpb.teste.autoparking.dao.PrecoDAO;
+import br.com.ifpb.teste.autoparking.model.Preco;
 
 public class PrecoDAOMem implements PrecoDAO {
 	

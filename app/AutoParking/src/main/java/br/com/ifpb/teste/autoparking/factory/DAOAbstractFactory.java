@@ -1,10 +1,10 @@
-package br.com.ifpb.teste.auto_parking.factory;
+package br.com.ifpb.teste.autoparking.factory;
 
-import br.com.ifpb.teste.auto_parking.dao.ClienteDAO;
-import br.com.ifpb.teste.auto_parking.dao.EstacionamentoDAO;
-import br.com.ifpb.teste.auto_parking.dao.PagamentoDAO;
-import br.com.ifpb.teste.auto_parking.dao.PrecoDAO;
-import br.com.ifpb.teste.auto_parking.dao.VeiculoDAO;
+import br.com.ifpb.teste.autoparking.dao.ClienteDAO;
+import br.com.ifpb.teste.autoparking.dao.EstacionamentoDAO;
+import br.com.ifpb.teste.autoparking.dao.PagamentoDAO;
+import br.com.ifpb.teste.autoparking.dao.PrecoDAO;
+import br.com.ifpb.teste.autoparking.dao.VeiculoDAO;
 
 public interface DAOAbstractFactory {
 	public ClienteDAO criaClienteDAO();

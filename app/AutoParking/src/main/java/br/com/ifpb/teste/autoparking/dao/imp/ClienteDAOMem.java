@@ -1,11 +1,11 @@
-package br.com.ifpb.teste.auto_parking.dao.imp;
+package br.com.ifpb.teste.autoparking.dao.imp;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import br.com.ifpb.teste.auto_parking.dao.ClienteDAO;
-import br.com.ifpb.teste.auto_parking.model.Cliente;
+import br.com.ifpb.teste.autoparking.dao.ClienteDAO;
+import br.com.ifpb.teste.autoparking.model.Cliente;
 
 public class ClienteDAOMem implements ClienteDAO{
 	private HashSet<Cliente> clientes = null;
