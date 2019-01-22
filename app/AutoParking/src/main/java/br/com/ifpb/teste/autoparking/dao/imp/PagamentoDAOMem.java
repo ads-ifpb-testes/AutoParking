@@ -24,8 +24,7 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 	
 	public boolean pagamentoExiste(Pagamento pagamento) {
-		// TODO Auto-generated method stub
-		return false;
+		return pagamentos.contains(pagamento);
 	}
 
 	public double valorDevido(int id) {
