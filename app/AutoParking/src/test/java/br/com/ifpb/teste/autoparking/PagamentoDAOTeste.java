@@ -202,5 +202,13 @@ public class PagamentoDAOTeste {
 		Assert.assertEquals(0, pag1.getDhPagamento().compareTo(estacionamento1.getDhPagamento()));		
 	}
 	
+	@Test
+	public void valorDevidoTeste() {
+		Estacionamento estacionamento1 = new Estacionamento(4, false, false, "LWG-4724", LocalDateTime.now().minusHours(1), null, null, null);
+		when(estacionamentoDAOMock.buscarEstacionamento(4)).thenReturn(estacionamento1);
+		when(precoDAOMock.calcularPreco(60)).thenReturn(10.65f);	
+		Assert.assertEquals(pagamentoDAO.valorDevido(4),10.65f,0.01f);
+	}
+	
 	
 }
