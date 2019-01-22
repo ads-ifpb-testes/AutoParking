@@ -1,6 +1,4 @@
-package br.com.ifpb.teste.auto_parking;
-
-import static org.junit.Assert.assertArrayEquals;
+package br.com.ifpb.teste.autoparking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +9,22 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.ifpb.teste.autoparking.dao.imp.ClienteDAOMem;
+import br.com.ifpb.teste.autoparking.dao.ClienteDAO;
+import br.com.ifpb.teste.autoparking.factory.DAOAbstractFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory.FactoryType;
 import br.com.ifpb.teste.autoparking.model.Cliente;
 
-public class ClienteDAOMemTeste {
+public class ClienteDAOTeste {
 	
 	private static ArrayList<Cliente> listaNomes = new ArrayList<Cliente>();
-	private ClienteDAOMem clienteDAO = null;
+	private static DAOAbstractFactory daoFactory = null;
+	private ClienteDAO clienteDAO = null;
 	
 	
 	@BeforeClass
 	public static void criarClientes(){
+		daoFactory = DAOFactory.createFactory(FactoryType.MEM);
 		listaNomes.add(new Cliente("Bruno Raimundo Isaac da Silva", "858.209.873-14"));
 		listaNomes.add(new Cliente("Esther Luana Simone dos Santos", "431.201.150-88"));
 		listaNomes.add(new Cliente("Fábio Enzo Giovanni das Neves", "322.258.588-10"));
@@ -30,7 +33,7 @@ public class ClienteDAOMemTeste {
 	
 	@Before
 	public void inicioTeste() {
-		clienteDAO = new ClienteDAOMem();
+		clienteDAO = daoFactory.criaClienteDAO();
 		for(Cliente cliente: listaNomes) {
 			clienteDAO.cadastrarCliente(cliente);			
 		}		

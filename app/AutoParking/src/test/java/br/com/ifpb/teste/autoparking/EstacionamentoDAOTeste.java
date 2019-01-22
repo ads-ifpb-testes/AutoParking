@@ -1,4 +1,4 @@
-package br.com.ifpb.teste.auto_parking;
+package br.com.ifpb.teste.autoparking;
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,16 +12,21 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.ifpb.teste.autoparking.dao.imp.EstacionamentoDAOMem;
+import br.com.ifpb.teste.autoparking.dao.EstacionamentoDAO;
+import br.com.ifpb.teste.autoparking.factory.DAOAbstractFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory.FactoryType;
 import br.com.ifpb.teste.autoparking.model.Estacionamento;
 
-public class EstacionamentoDAOMemTeste {
+public class EstacionamentoDAOTeste {
 
 	private static ArrayList<Estacionamento> listaEstacionamento = new ArrayList<Estacionamento>();
-	private EstacionamentoDAOMem estacionamentoDAO = null;
+	private static DAOAbstractFactory daoFactory = null;
+	private EstacionamentoDAO estacionamentoDAO = null;
 	
 	@BeforeClass
 	public static void criarEstacionamentos() {
+		daoFactory = DAOFactory.createFactory(FactoryType.MEM);
 		//listaEstacionamento.add(new Estacionamento(id, quitado, finalizado, placa, dhChegada, dhPagamento, dhSaida, valor));
 		listaEstacionamento.add(new Estacionamento(1, true, true, "JJK-1373", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 5.5));
 		listaEstacionamento.add(new Estacionamento(2, true, false, "JOE-8330", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(29), null, 7.8));
@@ -31,7 +36,7 @@ public class EstacionamentoDAOMemTeste {
 	
 	@Before
 	public void inicioTeste() {
-		estacionamentoDAO = new EstacionamentoDAOMem();
+		estacionamentoDAO = daoFactory.criaEstacionamentoDAO();
 		for(Estacionamento estacionamento: listaEstacionamento) {
 			estacionamentoDAO.cadastrarEstacionamento(
 					new Estacionamento(

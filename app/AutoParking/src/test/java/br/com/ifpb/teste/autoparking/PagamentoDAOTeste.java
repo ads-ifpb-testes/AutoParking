@@ -1,4 +1,4 @@
-package br.com.ifpb.teste.auto_parking;
+package br.com.ifpb.teste.autoparking;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -15,9 +15,12 @@ import org.junit.Test;
 
 import br.com.ifpb.teste.autoparking.dao.ClienteDAO;
 import br.com.ifpb.teste.autoparking.dao.EstacionamentoDAO;
+import br.com.ifpb.teste.autoparking.dao.PagamentoDAO;
 import br.com.ifpb.teste.autoparking.dao.PrecoDAO;
 import br.com.ifpb.teste.autoparking.dao.VeiculoDAO;
-import br.com.ifpb.teste.autoparking.dao.imp.PagamentoDAOMem;
+import br.com.ifpb.teste.autoparking.factory.DAOAbstractFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory.FactoryType;
 import br.com.ifpb.teste.autoparking.model.Cliente;
 import br.com.ifpb.teste.autoparking.model.Estacionamento;
 import br.com.ifpb.teste.autoparking.model.Pagamento;
@@ -25,13 +28,15 @@ import br.com.ifpb.teste.autoparking.model.Pagamento.TipoPagamento;
 import br.com.ifpb.teste.autoparking.model.Preco;
 import br.com.ifpb.teste.autoparking.model.Veiculo;
 
-public class PagamentoDAOMemTeste {
+public class PagamentoDAOTeste {
+	
+	private static DAOAbstractFactory daoFactory = null;
 	private static ArrayList<Preco> listaPreco = new ArrayList<Preco>();
 	private static ArrayList<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
 	private static ArrayList<Cliente> listaNomes = new ArrayList<Cliente>();
 	private static ArrayList<Estacionamento> listaEstacionamento = new ArrayList<Estacionamento>();
 	private static ArrayList<Pagamento> listaPagamento = new ArrayList<Pagamento>();	
-	private PagamentoDAOMem pagamentoDAO = null;
+	private PagamentoDAO pagamentoDAO = null;
 	ClienteDAO clienteDAOMock = null;
 	VeiculoDAO veiculoDAOMock = null;
 	PrecoDAO precoDAOMock = null;
@@ -39,6 +44,7 @@ public class PagamentoDAOMemTeste {
 	
 	@BeforeClass
 	public static void criarPagamentos() {
+		daoFactory = DAOFactory.createFactory(FactoryType.MEM);
 		/*//Precos
 		listaPreco.add(new Preco(true, 0, 0, 5.5f));       //   valor fixo
 		listaPreco.add(new Preco(false, 31, 60, 10.3f));   //  31 ~ 60  minutos
@@ -79,8 +85,7 @@ public class PagamentoDAOMemTeste {
 		veiculoDAOMock = mock(VeiculoDAO.class);
 		precoDAOMock = mock(PrecoDAO.class);
 		estacionamentoDAOMock = mock(EstacionamentoDAO.class);
-		
-		pagamentoDAO = new PagamentoDAOMem(clienteDAOMock, veiculoDAOMock, precoDAOMock, estacionamentoDAOMock);
+		pagamentoDAO = daoFactory.criaPagamentoDAO(clienteDAOMock, veiculoDAOMock, precoDAOMock, estacionamentoDAOMock);
 		
 		for(Pagamento pagamento: listaPagamento) {
 			pagamentoDAO.cadastrarPagamento(pagamento);
@@ -94,7 +99,7 @@ public class PagamentoDAOMemTeste {
 		precoDAOMock = null;
 		estacionamentoDAOMock = null;
 		
-		pagamentoDAO = new PagamentoDAOMem(clienteDAOMock, veiculoDAOMock, precoDAOMock, estacionamentoDAOMock);		
+		pagamentoDAO = null;		
 	}
 	
 	@Test
@@ -172,8 +177,7 @@ public class PagamentoDAOMemTeste {
 		Assert.assertEquals(150.0, cliente1.getCredito(),0.01);
 	}
 	
-	@Testionamento(1, true, true, "JJK-1373", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 5.5));
-	listaEstacionamento.add(new Estacionamento(2, true, false, "JOE-8330", Lo
+	@Test
 	public void listarPagamentoTeste() {
 		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 1);
 		Assert.assertFalse(listaPagamento.contains(pag1));

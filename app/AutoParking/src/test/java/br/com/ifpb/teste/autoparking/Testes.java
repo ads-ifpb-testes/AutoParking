@@ -1,4 +1,4 @@
-package br.com.ifpb.teste.auto_parking;
+package br.com.ifpb.teste.autoparking;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -6,10 +6,10 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	ClienteDAOMemTeste.class,
-	VeiculoDAOMemTeste.class,
-	PrecoDAOMemTeste.class,
-	EstacionamentoDAOMemTeste.class
+	ClienteDAOTeste.class,
+	VeiculoDAOTeste.class,
+	PrecoDAOTeste.class,
+	EstacionamentoDAOTeste.class
 })
 
 public class Testes {

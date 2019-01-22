@@ -1,6 +1,4 @@
-package br.com.ifpb.teste.auto_parking;
-
-import static org.junit.Assert.assertArrayEquals;
+package br.com.ifpb.teste.autoparking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +9,21 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.ifpb.teste.autoparking.dao.imp.PrecoDAOMem;
+import br.com.ifpb.teste.autoparking.dao.PrecoDAO;
+import br.com.ifpb.teste.autoparking.factory.DAOAbstractFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory.FactoryType;
 import br.com.ifpb.teste.autoparking.model.Preco;
 
-public class PrecoDAOMemTeste {
+public class PrecoDAOTeste {
 	
 	private static ArrayList<Preco> listaPreco = new ArrayList<Preco>();
-	private PrecoDAOMem precoDAO = null;
+	private static DAOAbstractFactory daoFactory = null;
+	private PrecoDAO precoDAO = null;
 	
 	@BeforeClass
 	public static void criarPrecos() {
+		daoFactory = DAOFactory.createFactory(FactoryType.MEM);
 		listaPreco.add(new Preco(true, 0, 0, 5.5f));       //   valor fixo
 		listaPreco.add(new Preco(false, 31, 60, 10.3f));   //  31 ~ 60  minutos
 		listaPreco.add(new Preco(false, 61, 120, 9.5f));   //  61 ~ 120 minutos
@@ -30,7 +33,7 @@ public class PrecoDAOMemTeste {
 	
 	@Before
 	public void inicioTeste() {
-		precoDAO = new PrecoDAOMem();
+		precoDAO = daoFactory.criaPrecoDAO();
 		for(Preco preco: listaPreco) {
 			precoDAO.cadastrarPreco(preco);
 		}

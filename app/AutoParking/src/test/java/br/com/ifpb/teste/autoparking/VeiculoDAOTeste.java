@@ -1,4 +1,4 @@
-package br.com.ifpb.teste.auto_parking;
+package br.com.ifpb.teste.autoparking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +9,21 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.ifpb.teste.autoparking.dao.imp.VeiculoDAOMem;
+import br.com.ifpb.teste.autoparking.dao.VeiculoDAO;
+import br.com.ifpb.teste.autoparking.factory.DAOAbstractFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory;
+import br.com.ifpb.teste.autoparking.factory.DAOFactory.FactoryType;
 import br.com.ifpb.teste.autoparking.model.Veiculo;
 
-public class VeiculoDAOMemTeste {
+public class VeiculoDAOTeste {
 	
 	private static ArrayList<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
-	private VeiculoDAOMem veiculoDAO = null;
+	private static DAOAbstractFactory daoFactory = null; 
+	private VeiculoDAO veiculoDAO = null;
 	
 	@BeforeClass
 	public static void criarVeiculos() {
+		daoFactory = DAOFactory.createFactory(FactoryType.MEM);
 		listaVeiculos.add(new Veiculo("858.209.873-14","MKI-5381","Jeep","Grand Cherokee SRT8 6.1 V8 16V 432cv Aut","Dourado",2010));
 		listaVeiculos.add(new Veiculo("431.201.150-88","JJK-1373","Land Rover","Defender 90 TDI SW Diesel","Laranja",2015));
 		listaVeiculos.add(new Veiculo("322.258.588-10","HRL-8233","Lexus","NX-200t F-Sport 2.0 16v 238cv Aut.","Dourado",2011));
@@ -29,7 +34,7 @@ public class VeiculoDAOMemTeste {
 	
 	@Before
 	public void inicioTeste() {
-		veiculoDAO = new VeiculoDAOMem();
+		veiculoDAO = daoFactory.criaVeiculoDAO();
 		for(Veiculo veiculo: listaVeiculos) {
 			veiculoDAO.cadastrarVeiculo(veiculo);
 		}
