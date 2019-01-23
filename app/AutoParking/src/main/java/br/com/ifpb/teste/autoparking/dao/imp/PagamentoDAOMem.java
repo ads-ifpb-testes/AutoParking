@@ -48,8 +48,8 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public double calcularTroco(int id, double valorPago) {
-		// TODO Auto-generated method stub
-		return 0;
+		double valor = valorDevido(id);
+		return valorPago - valor;
 	}
 
 	public void registrarPagamento(int id) {
