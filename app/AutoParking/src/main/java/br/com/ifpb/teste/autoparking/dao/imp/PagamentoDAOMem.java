@@ -53,8 +53,15 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public void registrarPagamento(int id) {
-		// TODO Auto-generated method stub
-
+		Estacionamento estacionamento = estacionamentoDAO.buscarEstacionamento(id);
+		if (estacionamento == null)
+			return;
+		if(estacionamento.isQuitado() || estacionamento.isFinalizado())
+			return;
+		double valor = valorDevido(id);
+		estacionamento.setQuitado(true);
+		estacionamento.setDhPagamento(LocalDateTime.now());
+		estacionamento.setValor(valor);
 	}
 
 	public void incluirCredito(String cpf, double valor) {
