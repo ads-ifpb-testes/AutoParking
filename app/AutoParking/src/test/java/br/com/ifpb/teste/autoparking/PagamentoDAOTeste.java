@@ -156,7 +156,7 @@ public class PagamentoDAOTeste {
 			Assert.assertTrue(pagamentoDAO.pagamentoExiste(pagamento));
 		}
 		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 6);
-		Assert.assertFalse(Assert.assertFalse(pagamentoDAO.pagamentoExiste(pag1)));
+		Assert.assertFalse(pagamentoDAO.pagamentoExiste(pag1));
 	}
 	
 	@Test
