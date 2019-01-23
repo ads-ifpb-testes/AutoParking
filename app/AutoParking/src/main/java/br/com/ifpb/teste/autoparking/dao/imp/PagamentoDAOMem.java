@@ -1,20 +1,16 @@
 package br.com.ifpb.teste.autoparking.dao.imp;
 
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.Period;
-import java.time.ZoneOffset;
 import java.util.HashSet;
 import java.util.List;
-
-import org.joda.time.Minutes;
 
 import br.com.ifpb.teste.autoparking.dao.ClienteDAO;
 import br.com.ifpb.teste.autoparking.dao.EstacionamentoDAO;
 import br.com.ifpb.teste.autoparking.dao.PagamentoDAO;
 import br.com.ifpb.teste.autoparking.dao.PrecoDAO;
 import br.com.ifpb.teste.autoparking.dao.VeiculoDAO;
+import br.com.ifpb.teste.autoparking.model.Cliente;
 import br.com.ifpb.teste.autoparking.model.Estacionamento;
 import br.com.ifpb.teste.autoparking.model.Pagamento;
 
@@ -65,8 +61,11 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public void incluirCredito(String cpf, double valor) {
-		// TODO Auto-generated method stub
-
+		Cliente cliente = clienteDAO.buscarCliente(cpf);
+		if(cliente == null)
+			return;
+		double atual = cliente.getCredito();
+		cliente.setCredito(atual + valor);
 	}
 
 	public boolean cadastrarPagamento(Pagamento pagamento) {
