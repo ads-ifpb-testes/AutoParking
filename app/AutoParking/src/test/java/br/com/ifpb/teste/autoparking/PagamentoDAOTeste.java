@@ -104,13 +104,13 @@ public class PagamentoDAOTeste {
 	
 	@Test
 	public void cadastrarPagamentoTeste() {
-		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 1);
-		Pagamento pag2 = new Pagamento(LocalDateTime.now(), 10.5, 4);
-		Pagamento pag3 = new Pagamento(LocalDateTime.now(), 5.5, "858.209.873-14");
-		
-		Assert.assertFalse(pagamentoDAO.cadastrarPagamento(pag1));
-		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag2));
-		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag3));		
+		Pagamento pag1 = new Pagamento(LocalDateTime.now(), 10.5, 4);
+		Pagamento pag2 = new Pagamento(LocalDateTime.now(), 5.5, "858.209.873-14");
+		for(Pagamento pagamento: listaPagamento) {
+			Assert.assertFalse(pagamentoDAO.cadastrarPagamento(pagamento));
+		}
+		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag1));
+		Assert.assertTrue(pagamentoDAO.cadastrarPagamento(pag2));		
 	}
 	
 	@Test
