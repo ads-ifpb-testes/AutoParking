@@ -1,10 +1,22 @@
 package br.com.ifpb.teste.autoparking.dao.imp;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.ZoneOffset;
 import java.util.HashSet;
 import java.util.List;
 
-import br.com.ifpb.teste.autoparking.dao.*;
-import br.com.ifpb.teste.autoparking.model.*;
+import org.joda.time.Minutes;
+
+import br.com.ifpb.teste.autoparking.dao.ClienteDAO;
+import br.com.ifpb.teste.autoparking.dao.EstacionamentoDAO;
+import br.com.ifpb.teste.autoparking.dao.PagamentoDAO;
+import br.com.ifpb.teste.autoparking.dao.PrecoDAO;
+import br.com.ifpb.teste.autoparking.dao.VeiculoDAO;
+import br.com.ifpb.teste.autoparking.model.Estacionamento;
+import br.com.ifpb.teste.autoparking.model.Pagamento;
 
 public class PagamentoDAOMem implements PagamentoDAO {
 	
@@ -28,8 +40,11 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public double valorDevido(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		Estacionamento estacionamento = estacionamentoDAO.buscarEstacionamento(id);
+		if (estacionamento == null)
+			return 0;
+		long minutos = Duration.between(estacionamento.getDhChegada(), LocalDateTime.now()).toMinutes();
+		return precoDAO.calcularPreco(minutos);
 	}
 
 	public double calcularTroco(int id, double valorPago) {
