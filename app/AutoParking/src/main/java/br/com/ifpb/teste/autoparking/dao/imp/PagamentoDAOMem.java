@@ -110,8 +110,8 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public List<Pagamento> listarPagamento() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Pagamento> lista = new ArrayList<Pagamento>(pagamentos);
+		return lista;
 	}
 
 }
