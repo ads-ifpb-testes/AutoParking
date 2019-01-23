@@ -69,8 +69,9 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public boolean cadastrarPagamento(Pagamento pagamento) {
-		// TODO Auto-generated method stub
-		return false;
+		if (pagamentoExiste(pagamento))
+			return false;		
+		return pagamentos.add(pagamento);
 	}
 
 	public boolean excluirPagamento(Pagamento pagamento) {
