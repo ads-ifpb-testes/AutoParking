@@ -2,6 +2,7 @@ package br.com.ifpb.teste.autoparking.dao.imp;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -81,7 +82,11 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public Pagamento buscarPagamento(int id) {
-		// TODO Auto-generated method stub
+		ArrayList<Pagamento> lista = new ArrayList<Pagamento>(pagamentos);
+		for(Pagamento pagamento: lista) {
+			if(pagamento.getIdServico()==id)
+				return pagamento;
+		}
 		return null;
 	}
 
