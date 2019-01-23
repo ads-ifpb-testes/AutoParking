@@ -75,8 +75,9 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public boolean excluirPagamento(Pagamento pagamento) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!pagamentoExiste(pagamento))
+			return false;
+		return pagamentos.remove(pagamento);
 	}
 
 	public Pagamento buscarPagamento(int id) {
