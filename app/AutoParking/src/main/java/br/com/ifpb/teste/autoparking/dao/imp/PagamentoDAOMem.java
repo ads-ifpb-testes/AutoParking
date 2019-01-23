@@ -14,6 +14,7 @@ import br.com.ifpb.teste.autoparking.dao.VeiculoDAO;
 import br.com.ifpb.teste.autoparking.model.Cliente;
 import br.com.ifpb.teste.autoparking.model.Estacionamento;
 import br.com.ifpb.teste.autoparking.model.Pagamento;
+import br.com.ifpb.teste.autoparking.model.Pagamento.TipoPagamento;
 
 public class PagamentoDAOMem implements PagamentoDAO {
 	
@@ -91,8 +92,16 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public List<Pagamento> buscarPagamentoCpf(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Pagamento> lista = new ArrayList<Pagamento>(pagamentos);
+		ArrayList<Pagamento> rsp = new ArrayList<Pagamento>();
+		for (Pagamento pagamento: lista) {
+			if(pagamento.getTipoPagamento()==TipoPagamento.CREDITO) {
+				if(pagamento.getCpfCliente().equals(cpf)) {
+					rsp.add(pagamento);
+				}
+			}
+		}
+		return rsp;
 	}
 
 	public List<Pagamento> buscarPagamentoPlaca(String placa) {

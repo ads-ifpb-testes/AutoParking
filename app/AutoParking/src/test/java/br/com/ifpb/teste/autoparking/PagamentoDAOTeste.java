@@ -127,10 +127,10 @@ public class PagamentoDAOTeste {
 	public void buscarPagamentoCpfTeste() {
 		for(Pagamento pagamento: listaPagamento) {
 			if(pagamento.getTipoPagamento() == TipoPagamento.CREDITO) {
-				Assert.assertEquals(pagamento, pagamentoDAO.buscarPagamentoCpf(pagamento.getCpfCliente()));
+				Assert.assertTrue(pagamentoDAO.buscarPagamentoCpf(pagamento.getCpfCliente()).contains(pagamento));
 			}
 		}		
-		Assert.assertNull(pagamentoDAO.buscarPagamentoCpf("000.000.000-00"));
+		Assert.assertTrue(pagamentoDAO.buscarPagamentoCpf("000.000.000-00").isEmpty());
 	}
 	
 	@Test
