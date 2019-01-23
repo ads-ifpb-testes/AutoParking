@@ -136,7 +136,9 @@ public class PagamentoDAOTeste {
 	@Test
 	public void buscarPagamentoPlacaTeste() {
 		Estacionamento estacionamento1 = new Estacionamento(1, true, true, "LWG-4724", LocalDateTime.now().minusHours(1), LocalDateTime.now().minusMinutes(30), LocalDateTime.now(), 5.5);
-		when(estacionamentoDAOMock.buscarIdPlaca("LWG-4724")).thenReturn(estacionamento1.getId());	
+		ArrayList<Estacionamento> lista = new ArrayList<Estacionamento>();
+		lista.add(estacionamento1);
+		when(estacionamentoDAOMock.buscarEstacionamento("LWG-4724")).thenReturn(lista);	
 		List<Pagamento> pagamentos =  pagamentoDAO.buscarPagamentoPlaca("LWG-4724");
 		Assert.assertEquals(1,pagamentos.size());
 		Assert.assertEquals(1, pagamentos.get(0).getIdServico());
