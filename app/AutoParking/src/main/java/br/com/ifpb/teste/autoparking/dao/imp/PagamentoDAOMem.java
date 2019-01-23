@@ -106,12 +106,15 @@ public class PagamentoDAOMem implements PagamentoDAO {
 	}
 
 	public List<Pagamento> buscarPagamentoPlaca(String placa) {
-		String cpf = "";
-		Veiculo veiculo = veiculoDAO.buscarVeiculo(placa);
-		if ( veiculo != null ) {
-			cpf = veiculo.getCpfProprietario();
+		List<Estacionamento> lstEst = estacionamentoDAO.buscarEstacionamento(placa);
+		ArrayList<Pagamento> rsp = new ArrayList<Pagamento>();
+		for(Estacionamento estacionamento: lstEst) {
+			Pagamento pagamento = buscarPagamento(estacionamento.getId());
+			if (pagamento != null) {
+				rsp.add(pagamento);
+			}
 		}
-		return buscarPagamentoCpf(cpf);
+		return rsp;
 	}
 
 	public List<Pagamento> listarPagamento() {
