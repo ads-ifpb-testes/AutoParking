@@ -9,7 +9,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	ClienteDAOTeste.class,
 	VeiculoDAOTeste.class,
 	PrecoDAOTeste.class,
-	EstacionamentoDAOTeste.class
+	EstacionamentoDAOTeste.class,
+	PagamentoDAOTeste.class
 })
 
 public class Testes {
