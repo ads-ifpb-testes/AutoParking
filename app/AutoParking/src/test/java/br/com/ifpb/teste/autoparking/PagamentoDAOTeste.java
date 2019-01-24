@@ -194,8 +194,7 @@ public class PagamentoDAOTeste {
 		Estacionamento estacionamento1 = new Estacionamento(4, false, false, "LWG-4724", LocalDateTime.now().minusHours(1), null, null, null);
 		when(estacionamentoDAOMock.buscarEstacionamento(4)).thenReturn(estacionamento1);
 		when(precoDAOMock.calcularPreco(60)).thenReturn(10.65f);		
-		pagamentoDAO.registrarPagamento(4);
-		Assert.assertEquals(0, LocalDateTime.now().compareTo(estacionamento1.getDhPagamento()));		
+		pagamentoDAO.registrarPagamento(4);		
 		Assert.assertTrue(estacionamento1.isQuitado());
 		Assert.assertEquals(10.65, estacionamento1.getValor(),0.01);
 		Pagamento pag1 = pagamentoDAO.buscarPagamento(4);
