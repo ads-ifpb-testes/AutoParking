@@ -61,6 +61,8 @@ public class PagamentoDAOMem implements PagamentoDAO {
 		estacionamento.setQuitado(true);
 		estacionamento.setDhPagamento(LocalDateTime.now());
 		estacionamento.setValor(valor);
+		Pagamento pagamento = new Pagamento(estacionamento.getDhPagamento(),valor,id);
+		cadastrarPagamento(pagamento);
 	}
 
 	public void incluirCredito(String cpf, double valor) {
